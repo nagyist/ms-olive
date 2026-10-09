@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -27,8 +26,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -37,10 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/css/header.css?v=5dcc4e7b" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
     <script src="../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -52,7 +51,7 @@
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'how-to/configure-workflows/build-workflow';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = './_static/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'main';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -64,6 +63,7 @@
     <link rel="next" title="How to Define Input Model for a New Workflow" href="how-to-configure-model.html" />
     <link rel="prev" title="How to Use Python Interface" href="../python-api.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="main" />
   
@@ -113,7 +113,7 @@
   
     <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
   </button>
   
@@ -216,7 +216,7 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
  <i class="fa-solid fa-magnifying-glass"></i>
  <span class="search-button__default-text">Search</span>
  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -251,7 +251,7 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
  <i class="fa-solid fa-magnifying-glass"></i>
  <span class="search-button__default-text">Search</span>
  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -260,7 +260,7 @@
   
 
   
-    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
     </button>
   
@@ -441,9 +441,9 @@ If you prefer to run Olive workflows programmatically or want to access optimiza
 <section id="input-model">
 <h2>Input Model<a class="headerlink" href="#input-model" title="Link to this heading">#</a></h2>
 <p>Let’s use Phi-3.5 available on Hugging Face ( https://huggingface.co/microsoft/Phi-3.5-mini-instruct )</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">&quot;input_model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HfModel&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;model_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;microsoft/Phi-3.5-mini-instruct&quot;</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">"input_model"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HfModel"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"model_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"microsoft/Phi-3.5-mini-instruct"</span>
 <span class="w">    </span><span class="p">}</span>
 </pre></div>
 </div>
@@ -452,23 +452,23 @@ If you prefer to run Olive workflows programmatically or want to access optimiza
 <section id="passes-to-apply">
 <h2>Passes to apply<a class="headerlink" href="#passes-to-apply" title="Link to this heading">#</a></h2>
 <p>Olive can apply various transformations and optimizations, also known as passes, on the input model. Let’s apply ONNX conversion and Graph Surgery passes to convert the model to ONNX and apply select graph transformations.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">&quot;passes&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ModelBuilder&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;precision&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;int4&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;int4_block_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;int4_accuracy_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;int4_op_types_to_quantize&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;MatMul&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Gather&quot;</span><span class="w"> </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;save_as_external_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">"passes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"mb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ModelBuilder"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"precision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int4"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"int4_block_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"int4_accuracy_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"int4_op_types_to_quantize"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"MatMul"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Gather"</span><span class="w"> </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"save_as_external_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;gs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GraphSurgeries&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;surgeries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;surgeon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RemoveRopeMultiCache&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;surgeon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AttentionMaskToSequenceLengths&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;surgeon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SimplifiedLayerNormToL2Norm&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">"gs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GraphSurgeries"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"surgeries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="nt">"surgeon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RemoveRopeMultiCache"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="nt">"surgeon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AttentionMaskToSequenceLengths"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="nt">"surgeon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SimplifiedLayerNormToL2Norm"</span><span class="w"> </span><span class="p">}</span>
 <span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;save_as_external_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="nt">"save_as_external_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 </pre></div>
@@ -479,35 +479,191 @@ If you prefer to run Olive workflows programmatically or want to access optimiza
 <h2>Complete .json configuration<a class="headerlink" href="#complete-json-configuration" title="Link to this heading">#</a></h2>
 <p>You can additionally select output directory, log severity level etc,. See <a class="reference internal" href="../../reference/options.html"><span class="std std-doc">options</span></a> for complete list of configuration option. Now you have the complete .json configuration that you can use.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;input_model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HfModel&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;model_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;microsoft/Phi-3.5-mini-instruct&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;load_kwargs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;trust_remote_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nt">"input_model"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HfModel"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"model_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"microsoft/Phi-3.5-mini-instruct"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"load_kwargs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"trust_remote_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">   </span><span class="nt">&quot;passes&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ModelBuilder&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;precision&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;int4&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;int4_block_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;int4_accuracy_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;int4_op_types_to_quantize&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;MatMul&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Gather&quot;</span><span class="w"> </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;save_as_external_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">   </span><span class="nt">"passes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"mb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ModelBuilder"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"precision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int4"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"int4_block_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"int4_accuracy_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"int4_op_types_to_quantize"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"MatMul"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Gather"</span><span class="w"> </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"save_as_external_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;gs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GraphSurgeries&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;surgeries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;surgeon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RemoveRopeMultiCache&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;surgeon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AttentionMaskToSequenceLengths&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;surgeon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SimplifiedLayerNormToL2Norm&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">"gs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GraphSurgeries"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"surgeries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="nt">"surgeon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RemoveRopeMultiCache"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="nt">"surgeon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AttentionMaskToSequenceLengths"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="nt">"surgeon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SimplifiedLayerNormToL2Norm"</span><span class="w"> </span><span class="p">}</span>
 <span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;save_as_external_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="nt">"save_as_external_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;log_severity_level&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;output_dir&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models/phi3_5&quot;</span>
+<span class="w">    </span><span class="nt">"log_severity_level"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"output_dir"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"models/phi3_5"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
+<section id="run-multiple-builds">
+<h2>Run multiple builds<a class="headerlink" href="#run-multiple-builds" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">builds</span></code> to run different pass pipelines or model components from one workflow configuration. Each named build
+references passes from the top-level <code class="docutils literal notranslate"><span class="pre">passes</span></code> dictionary. The optional <code class="docutils literal notranslate"><span class="pre">_default</span></code> entry supplies shared build values.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"input_model"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HfModel"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"model_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"microsoft/Phi-3.5-mini-instruct"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"passes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"convert"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OnnxConversion"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"optimize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrtTransformersOptimization"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"max_concurrent_builds"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"builds"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"_default"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"output_dir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"models"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"convert-only"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"pipeline"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"convert"</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"optimized"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"pipeline"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"convert"</span><span class="p">,</span><span class="w"> </span><span class="s2">"optimize"</span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The workflow output root is the engine-level <code class="docutils literal notranslate"><span class="pre">output_dir</span></code>, which defaults to the current working directory. Named
+build outputs use their own <code class="docutils literal notranslate"><span class="pre">output_dir</span></code>, then <code class="docutils literal notranslate"><span class="pre">_default.output_dir</span></code>, then an explicitly configured engine-level
+<code class="docutils literal notranslate"><span class="pre">output_dir</span></code>, or <code class="docutils literal notranslate"><span class="pre">output/&lt;build-name&gt;</span></code> when none is configured. Build-level output settings never change the workflow
+output root.</p>
+<p>Builds run concurrently by default. Set the top-level <code class="docutils literal notranslate"><span class="pre">max_concurrent_builds</span></code> field to a positive integer to bound
+parallelism, or set it to <code class="docutils literal notranslate"><span class="pre">1</span></code> to force serial execution. Use parallel execution only when the builds have sufficient
+independent CPU, GPU, and memory resources. Passes are thread-safe by default; a pass that modifies process-global
+state must set <code class="docutils literal notranslate"><span class="pre">thread_safe:</span> <span class="pre">false</span></code> in its package configuration. If any selected pass is not thread-safe, Olive runs
+the entire multi-build workflow serially.</p>
+<p>The optional <code class="docutils literal notranslate"><span class="pre">components</span></code> field selects model components before running a build’s pipeline. Multi-build workflows
+currently require a local host, and every build must have non-overlapping output and cache directories.</p>
+<section id="assemble-hugging-face-component-builds">
+<h3>Assemble Hugging Face component builds<a class="headerlink" href="#assemble-hugging-face-component-builds" title="Link to this heading">#</a></h3>
+<p>Olive automatically assembles compatible component builds of the same <code class="docutils literal notranslate"><span class="pre">HfModel</span></code> into a standard Hugging Face
+checkpoint at the workflow output root. Components that have no build retain their weights from the first complete
+build checkpoint. The directory must not already contain files, so configure a clean engine-level <code class="docutils literal notranslate"><span class="pre">output_dir</span></code>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"input_model"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HfModel"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"model_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"google/gemma-4-E2B-it"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"passes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"decoder_kquant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KQuant"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"group_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"overrides"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"lm_head"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">}}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"embedding_kquant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KQuant"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"group_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"vision_rtn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rtn"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"group_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"engine"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"output_dir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"models/gemma4"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"builds"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"decoder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"components"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"decoder"</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"pipeline"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"decoder_kquant"</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"embedding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"components"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"embedding"</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"pipeline"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"embedding_kquant"</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"vision"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"components"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"vision_encoder"</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"pipeline"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"vision_rtn"</span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By default, each named build is saved under <code class="docutils literal notranslate"><span class="pre">&lt;engine.output_dir&gt;/&lt;build-name&gt;</span></code>. A build may set its own <code class="docutils literal notranslate"><span class="pre">output_dir</span></code>
+to any other location without changing where the assembled model is saved. Olive refuses to assemble into a workflow
+output directory that already contains files.
+Tied embedding and LM-head builds must use matching quantization layouts; incompatible layouts fail before builds run.</p>
+<p>The named build directories contain component-only safetensors artifacts. The workflow output contains the complete
+checkpoint:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>models/gemma4/
+  config.json
+  model.safetensors.index.json
+  model-unoptimized-00001.safetensors
+  decoder/model-00001.safetensors
+  decoder/component.json
+  embedding/model-00001.safetensors
+  embedding/component.json
+  vision/model-00001.safetensors
+  vision/component.json
+</pre></div>
+</div>
+<p>The safetensors index maps every model tensor to exactly one shard. Olive also merges component quantization settings
+into the standard top-level <code class="docutils literal notranslate"><span class="pre">quantization_config</span></code> using exact per-module overrides, and records build provenance under
+<code class="docutils literal notranslate"><span class="pre">olive_component_quantization</span></code>.</p>
+<p>Assembly is not attempted for whole-model builds, different hardware targets, or model/output types without a
+compatible assembler. Those builds remain independent variants. Overlapping component selections are rejected.</p>
+</section>
+<section id="assemble-onnx-compositemodel-component-builds">
+<h3>Assemble ONNX CompositeModel component builds<a class="headerlink" href="#assemble-onnx-compositemodel-component-builds" title="Link to this heading">#</a></h3>
+<p>For a directory-based ONNX <code class="docutils literal notranslate"><span class="pre">CompositeModel</span></code>, Olive rebuilds the complete package at the workflow output root after
+all component-scoped builds finish. Optimized components replace their source versions; components without a build
+and package-level files are copied unchanged from the input directory. Existing unrelated files in the engine output
+directory are preserved unless a build supplies an updated package-level file. Set an explicit <code class="docutils literal notranslate"><span class="pre">engine.output_dir</span></code>
+that does not overlap the input package.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"input_model"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CompositeModel"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"model_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exported_vlm"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"passes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"int4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OnnxBlockWiseRtnQuantization"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"engine"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"output_dir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"models/vlm"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"builds"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"decoder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"components"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"decoder"</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"pipeline"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"int4"</span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">exported_vlm</span></code> contains <code class="docutils literal notranslate"><span class="pre">decoder</span></code>, <code class="docutils literal notranslate"><span class="pre">embedding</span></code>, and <code class="docutils literal notranslate"><span class="pre">vision_encoder</span></code> subdirectories, the assembled output keeps
+all three. Only <code class="docutils literal notranslate"><span class="pre">decoder</span></code> comes from the build; <code class="docutils literal notranslate"><span class="pre">embedding</span></code>, <code class="docutils literal notranslate"><span class="pre">vision_encoder</span></code>, tokenizer files, processor files, and
+other package-level metadata retain their original contents and relative paths.</p>
+<p>Automatic assembly only applies when every named build declares <code class="docutils literal notranslate"><span class="pre">components</span></code>. Builds that define alternative
+whole-model pipelines without <code class="docutils literal notranslate"><span class="pre">components</span></code> remain independent variants.</p>
+<p>Olive validates component workflows before execution and rejects workflow, build artifact, or build cache directories
+that would write into the input CompositeModel package. By default, build artifacts remain under
+<code class="docutils literal notranslate"><span class="pre">&lt;engine.output_dir&gt;/.builds/&lt;build-name&gt;</span></code>; existing package-file collisions and linked paths are rejected.</p>
+</section>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
@@ -565,6 +721,11 @@ If you prefer to run Olive workflows programmatically or want to access optimiza
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-model">Input Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#passes-to-apply">Passes to apply</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-json-configuration">Complete .json configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-multiple-builds">Run multiple builds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assemble-hugging-face-component-builds">Assemble Hugging Face component builds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assemble-onnx-compositemodel-component-builds">Assemble ONNX CompositeModel component builds</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
   </nav></div>
@@ -582,8 +743,8 @@ If you prefer to run Olive workflows programmatically or want to access optimiza
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -609,7 +770,7 @@ If you prefer to run Olive workflows programmatically or want to access optimiza
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
 </p></div>
       
     </div>

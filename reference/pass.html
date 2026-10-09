@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -27,8 +26,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -37,10 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/header.css?v=5dcc4e7b" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -52,7 +51,7 @@
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/pass';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = './_static/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'main';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -64,6 +63,7 @@
     <link rel="next" title="Python Interface" href="python_api.html" />
     <link rel="prev" title="Olive Options" href="options.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="main" />
   
@@ -113,7 +113,7 @@
   
     <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
   </button>
   
@@ -216,7 +216,7 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
  <i class="fa-solid fa-magnifying-glass"></i>
  <span class="search-button__default-text">Search</span>
  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -251,7 +251,7 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
  <i class="fa-solid fa-magnifying-glass"></i>
  <span class="search-button__default-text">Search</span>
  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -260,7 +260,7 @@
   
 
   
-    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
     </button>
   
@@ -602,7 +602,7 @@
 <span class="sig-name descname"><span class="pre">target_opset</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-0" title="Link to this definition">#</a></dt>
 <dd><p>The version of the default (ai.onnx) opset to target. Default: latest opset version.</p>
 <p><strong>type:</strong> int</p>
-<p><strong>default_value:</strong> 27</p>
+<p><strong>default_value:</strong> 28</p>
 <p><strong>search_defaults:</strong> None</p>
 </dd></dl>
 
@@ -2883,6 +2883,15 @@
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-use_int8_per_channel">
+<span class="sig-name descname"><span class="pre">use_int8_per_channel</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-use_int8_per_channel" title="Link to this definition">#</a></dt>
+<dd><p>Whether to re-encode the blockwise quantized weight as symmetric int8 with one scale per output channel. The blockwise values are dequantized to their exact float values and requantized, so the weight is emitted as a per-axis DequantizeLinear with no block_size. Default is False. Useful for EPs that do not support blockwise DequantizeLinear, such as QNN, at the cost of a larger weight.</p>
+<p><strong>type:</strong> bool</p>
+<p><strong>default_value:</strong> False</p>
+<p><strong>search_defaults:</strong> None</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-134">
 <span class="sig-name descname"><span class="pre">nodes_to_exclude</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-134" title="Link to this definition">#</a></dt>
 <dd><p>List of node names to exclude from the conversion. The node names should be the names of the MatMulNBits nodes. Default is None.</p>
@@ -3880,8 +3889,14 @@
         - context model (sequence length = context_length)
         - iterator model (sequence length = 1)
     embeddings and lm_head keep their original shapes.
+
+    Models whose embedding lookup is a separate artifact outside the optimization pipeline enter at
+    “inputs_embeds” and have no embeddings component. Such models are also supported and require at least 2
+    components: transformer layers and lm_head. An embeddings-only first component must accept
+    “input_ids”, produce a rank-3 embedding, and contain no attention or transformer normalization work.
+
     The output model has an attribute “llm_pipeline” that contains the mapping of the components with keys:
-        - embeddings: name of the embeddings model
+        - embeddings: name of the embeddings model. Omitted when the input model has no embeddings component.
         - context: list of context model names
         - iterator: list of iterator model names
         - lm_head: name of the lm_head model</p>
@@ -3902,6 +3917,15 @@
 <dd><p>Input length of the context model.</p>
 <p><strong>type:</strong> int</p>
 <p><strong>default_value:</strong> 64</p>
+<p><strong>search_defaults:</strong> None</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-prefill_decode_models">
+<span class="sig-name descname"><span class="pre">prefill_decode_models</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-prefill_decode_models" title="Link to this definition">#</a></dt>
+<dd><p>To generate prefill and decode models. Specifically for QNN GPU</p>
+<p><strong>type:</strong> bool</p>
+<p><strong>default_value:</strong> True</p>
 <p><strong>search_defaults:</strong> None</p>
 </dd></dl>
 
@@ -3950,7 +3974,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-session_options">
 <span class="sig-name descname"><span class="pre">session_options</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-session_options" title="Link to this definition">#</a></dt>
-<dd><p>Session options for the EP.</p>
+<dd><p>Session options for the EP. Keys are added as session config entries, except log_severity_level and log_verbosity_level which are set as typed attributes.</p>
 <p><strong>type:</strong> dict</p>
 <p><strong>default_value:</strong> None</p>
 <p><strong>search_defaults:</strong> None</p>
@@ -3978,7 +4002,10 @@
     - embeddings: the embeddings model is saved as is
     - context: the context model is composed of all models in the context group
     - iterator: the iterator model is composed of all models in the iterator group
-    - lm_head: the lm_head model is saved as is</p>
+    - lm_head: the lm_head model is saved as is
+
+    Consumed outputs are preserved when named by the ORT GenAI decoder output contract
+    or explicitly listed in <code class="docutils literal notranslate"><span class="pre">preserved_outputs</span></code> (literal names or <code class="docutils literal notranslate"><span class="pre">%d</span></code> templates).</p>
 <p><strong>Input:</strong> handler.composite.CompositeModelHandler</p>
 <p><strong>Output:</strong> handler.onnx.ONNXModelHandler | handler.composite.CompositeModelHandler</p>
 <dl class="std option">
@@ -4023,6 +4050,15 @@
 <dd><p>Effective only if save_as_external_data is True. If true, convert all tensors to external data If false, convert only non-attribute tensors to external data</p>
 <p><strong>type:</strong> bool</p>
 <p><strong>default_value:</strong> False</p>
+<p><strong>search_defaults:</strong> None</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-preserved_outputs">
+<span class="sig-name descname"><span class="pre">preserved_outputs</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-preserved_outputs" title="Link to this definition">#</a></dt>
+<dd><p>Outputs to keep even when consumed by another component. Accepts literal names and %d templates. Added to outputs declared in genai_config.json, if present.</p>
+<p><strong>type:</strong> list[str]</p>
+<p><strong>default_value:</strong> []</p>
 <p><strong>search_defaults:</strong> None</p>
 </dd></dl>
 
@@ -4312,6 +4348,60 @@
 <dd><p>The model can use CUDA graph capture for CUDA execution provider. If enabled, all nodes being placed on the CUDA EP is the prerequisite for the CUDA graph to be used correctly.</p>
 <p><strong>type:</strong> bool</p>
 <p><strong>default_value:</strong> None</p>
+<p><strong>search_defaults:</strong> None</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-builder_config_version">
+<span class="sig-name descname"><span class="pre">builder_config_version</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-builder_config_version" title="Link to this definition">#</a></dt>
+<dd><p>ONNX Runtime GenAI Model Builder configuration schema version.</p>
+<p><strong>type:</strong> int</p>
+<p><strong>default_value:</strong> None</p>
+<p><strong>search_defaults:</strong> None</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-target_options">
+<span class="sig-name descname"><span class="pre">target_options</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-target_options" title="Link to this definition">#</a></dt>
+<dd><p>Target model export policy for the structured Model Builder configuration.</p>
+<p><strong>type:</strong> dict[str, Any]</p>
+<p><strong>default_value:</strong> None</p>
+<p><strong>search_defaults:</strong> None</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-drafter_options">
+<span class="sig-name descname"><span class="pre">drafter_options</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-drafter_options" title="Link to this definition">#</a></dt>
+<dd><p>Drafter export and shared-weight policy for the structured Model Builder configuration.</p>
+<p><strong>type:</strong> dict[str, Any]</p>
+<p><strong>default_value:</strong> None</p>
+<p><strong>search_defaults:</strong> None</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-speculative_options">
+<span class="sig-name descname"><span class="pre">speculative_options</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-speculative_options" title="Link to this definition">#</a></dt>
+<dd><p>Target and drafter speculative graph contract.</p>
+<p><strong>type:</strong> dict[str, Any]</p>
+<p><strong>default_value:</strong> None</p>
+<p><strong>search_defaults:</strong> None</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-runtime_config">
+<span class="sig-name descname"><span class="pre">runtime_config</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-runtime_config" title="Link to this definition">#</a></dt>
+<dd><p>Runtime configuration object or JSON file consumed by Model Builder.</p>
+<p><strong>type:</strong> dict[str, Any] | str</p>
+<p><strong>default_value:</strong> None</p>
+<p><strong>search_defaults:</strong> None</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-split_cpu_embedding">
+<span class="sig-name descname"><span class="pre">split_cpu_embedding</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-split_cpu_embedding" title="Link to this definition">#</a></dt>
+<dd><p>Move a packed model’s shared token embedding into a separate CPU session.</p>
+<p><strong>type:</strong> bool</p>
+<p><strong>default_value:</strong> False</p>
 <p><strong>search_defaults:</strong> None</p>
 </dd></dl>
 
@@ -4830,15 +4920,21 @@
 
     The supported algorithms are:
     - Layer id based heuristic:
-        - k_quant_last: LM head in high precision.
-        - k_quant_down: LM head + Down projection from first 1/8 and last 1/8 layers, and every 3rd layer in between in high precision.
-        - k_quant_mixed: LM head + QKV and Down projection from first 1/8 and last 1/8 layers, and every 3rd layer in between in high precision.
+        - high_precision_lm_head: LM head in high precision.
+        - high_precision_mlp_down: LM head + down projection from first 1/8 and last 1/8 layers, and every 3rd
+          layer in between in high precision.
+        - high_precision_mlp_down_qkv: LM head + QKV and down projection from first 1/8 and last 1/8 layers,
+          and every 3rd layer in between in high precision.
     - Sensitivity score based:
         - snr: Signal-to-Noise Ratio based selection.
         - snr_relative: Relative SNR (between low and high precision) based selection.
         - iqe: Inverse of Integer Quantization Error based selection.
         - iqe_relative: Relative IQE (between low and high precision) based selection.
         - kld_gradient: KL Divergence gradient based selection.
+
+    Deprecated algorithm strings <code class="docutils literal notranslate"><span class="pre">k_quant_last</span></code>, <code class="docutils literal notranslate"><span class="pre">k_quant_down</span></code>, and <code class="docutils literal notranslate"><span class="pre">k_quant_mixed</span></code> map to
+    <code class="docutils literal notranslate"><span class="pre">high_precision_lm_head</span></code>, <code class="docutils literal notranslate"><span class="pre">high_precision_mlp_down</span></code>, and <code class="docutils literal notranslate"><span class="pre">high_precision_mlp_down_qkv</span></code>,
+    respectively, and remain accepted with a <code class="docutils literal notranslate"><span class="pre">FutureWarning</span></code>.
 
     For <code class="docutils literal notranslate"><span class="pre">kld_gradient</span></code> the peak memory required for KL Divergence scoring can be tuned via
     <code class="docutils literal notranslate"><span class="pre">kld_memory_mode</span></code>, which supports <code class="docutils literal notranslate"><span class="pre">auto</span></code> (default; picks based on the model size and free
@@ -4848,7 +4944,12 @@
     The override map produced by this pass groups Q/K/V projections in the same attention block so
     they always share precision, which is required for ModelBuilder’s GQA fusion: ONNX export
     fuses q/k/v into a single matmul, so the score-based algorithms aggregate per-projection
-    stats into the score of the fused matmul before deciding which units to promote.</p>
+    stats into the score of the fused matmul before deciding which units to promote.
+
+    <code class="docutils literal notranslate"><span class="pre">moe=True</span></code> extends the fixed MLP heuristics and the SNR/IQE score-based algorithms to
+    supported fused MoE expert projections. Fused <code class="docutils literal notranslate"><span class="pre">gate_up_proj</span></code> and <code class="docutils literal notranslate"><span class="pre">down_proj</span></code> tensors
+    are independent whole-projection selection units. KLD-gradient MoE scoring is not yet
+    implemented.</p>
 <p><strong>Input:</strong> HfModelHandler</p>
 <p><strong>Output:</strong> HfModelHandler</p>
 <dl class="std option">
@@ -4857,7 +4958,7 @@
 <dd><p>The algorithm to use for mixed precision.</p>
 <p><strong>type:</strong> olive.passes.pytorch.selective_mixed_precision.SelectiveMixedPrecision.Algorithm</p>
 <p><strong>default_value:</strong> None</p>
-<p><strong>search_defaults:</strong> Categorical([&lt;Algorithm.IQE: ‘iqe’&gt;, &lt;Algorithm.IQE_RELATIVE: ‘iqe_relative’&gt;, &lt;Algorithm.K_QUANT_DOWN: ‘k_quant_down’&gt;, &lt;Algorithm.K_QUANT_MIXED: ‘k_quant_mixed’&gt;, &lt;Algorithm.K_QUANT_LAST: ‘k_quant_last’&gt;, &lt;Algorithm.KLD_GRADIENT: ‘kld_gradient’&gt;, &lt;Algorithm.SNR: ‘snr’&gt;, &lt;Algorithm.SNR_RELATIVE: ‘snr_relative’&gt;])</p>
+<p><strong>search_defaults:</strong> Categorical([&lt;Algorithm.IQE: ‘iqe’&gt;, &lt;Algorithm.IQE_RELATIVE: ‘iqe_relative’&gt;, &lt;Algorithm.HIGH_PRECISION_MLP_DOWN: ‘high_precision_mlp_down’&gt;, &lt;Algorithm.HIGH_PRECISION_MLP_DOWN_QKV: ‘high_precision_mlp_down_qkv’&gt;, &lt;Algorithm.HIGH_PRECISION_LM_HEAD: ‘high_precision_lm_head’&gt;, &lt;Algorithm.KLD_GRADIENT: ‘kld_gradient’&gt;, &lt;Algorithm.SNR: ‘snr’&gt;, &lt;Algorithm.SNR_RELATIVE: ‘snr_relative’&gt;])</p>
 </dd></dl>
 
 <dl class="std option">
@@ -4929,6 +5030,15 @@
 <dd><p>Memory mode for kld_gradient. <code class="docutils literal notranslate"><span class="pre">auto</span></code> (default) picks among <code class="docutils literal notranslate"><span class="pre">full</span></code>, <code class="docutils literal notranslate"><span class="pre">multi_gpu</span></code>, <code class="docutils literal notranslate"><span class="pre">low_memory</span></code> and <code class="docutils literal notranslate"><span class="pre">offload</span></code> based on the model size and free device memory. <code class="docutils literal notranslate"><span class="pre">full</span></code> keeps a per-layer fp32 gradient accumulator (legacy behavior). <code class="docutils literal notranslate"><span class="pre">multi_gpu</span></code> runs the <code class="docutils literal notranslate"><span class="pre">full</span></code> algorithm with teacher and student sharded across all visible CUDA devices via <code class="docutils literal notranslate"><span class="pre">accelerate</span></code>. <code class="docutils literal notranslate"><span class="pre">low_memory</span></code> streams the alignment to a scalar per layer. <code class="docutils literal notranslate"><span class="pre">offload</span></code> also keeps teacher and student off device when not in use.</p>
 <p><strong>type:</strong> olive.passes.pytorch.selective_mixed_precision.KldMemoryMode</p>
 <p><strong>default_value:</strong> auto</p>
+<p><strong>search_defaults:</strong> None</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-moe">
+<span class="sig-name descname"><span class="pre">moe</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-moe" title="Link to this definition">#</a></dt>
+<dd><p>Whether fixed MLP heuristics or SNR/IQE score-based algorithms should select supported fused-MoE expert projections.</p>
+<p><strong>type:</strong> bool</p>
+<p><strong>default_value:</strong> False</p>
 <p><strong>search_defaults:</strong> None</p>
 </dd></dl>
 
@@ -6171,7 +6281,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-321">
 <span class="sig-name descname"><span class="pre">bits</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-321" title="Link to this definition">#</a></dt>
-<dd><p>quantization bits. Default value is 4</p>
+<dd><p>Quantization bits: 2, 3, 4 or 8. Default value is 4; INT3 is PyTorch-only.</p>
 <p><strong>type:</strong> olive.constants.PrecisionBits</p>
 <p><strong>default_value:</strong> 4</p>
 <p><strong>search_defaults:</strong> Categorical([&lt;PrecisionBits.BITS2: 2&gt;, &lt;PrecisionBits.BITS4: 4&gt;, &lt;PrecisionBits.BITS8: 8&gt;])</p>
@@ -6202,6 +6312,24 @@
 <p><strong>type:</strong> bool</p>
 <p><strong>default_value:</strong> False</p>
 <p><strong>search_defaults:</strong> Categorical([True, False])</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-quantize_vision">
+<span class="sig-name descname"><span class="pre">quantize_vision</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-quantize_vision" title="Link to this definition">#</a></dt>
+<dd><p>Whether to quantize a composite vision-language model’s vision tower in this pass. When False (default), the vision tower (<code class="docutils literal notranslate"><span class="pre">visual</span></code>/<code class="docutils literal notranslate"><span class="pre">vision_tower</span></code>/<code class="docutils literal notranslate"><span class="pre">vision_model</span></code>/<code class="docutils literal notranslate"><span class="pre">vision_encoder</span></code>) is left in full precision – the typical Olive pipeline quantizes it separately downstream (e.g. on the ONNX side). Set to True to quantize the vision tower here too, e.g. when this pass is the only quantization step for the model.</p>
+<p><strong>type:</strong> bool</p>
+<p><strong>default_value:</strong> False</p>
+<p><strong>search_defaults:</strong> None</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-324">
+<span class="sig-name descname"><span class="pre">moe</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-324" title="Link to this definition">#</a></dt>
+<dd><p>Whether to quantize MoE expert modules / parameters. When False (default), every nn.Module under each experts subtree is skipped. Defaults reuse the pass-level bits/group_size/sym settings; use <code class="docutils literal notranslate"><span class="pre">overrides</span></code> to tune experts independently.</p>
+<p><strong>type:</strong> bool</p>
+<p><strong>default_value:</strong> False</p>
+<p><strong>search_defaults:</strong> None</p>
 </dd></dl>
 
 <dl class="std option">
@@ -6241,11 +6369,29 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-324">
-<span class="sig-name descname"><span class="pre">data_config</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-324" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-325">
+<span class="sig-name descname"><span class="pre">data_config</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-325" title="Link to this definition">#</a></dt>
 <dd><p>Data config for quantization. If not provided, wikitest train data will be used for HfModels. Required for PyTorch models.</p>
 <p><strong>type:</strong> olive.data.config.DataConfig | dict</p>
 <p><strong>default_value:</strong> None</p>
+<p><strong>search_defaults:</strong> None</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-moe_fallback_threshold">
+<span class="sig-name descname"><span class="pre">moe_fallback_threshold</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-moe_fallback_threshold" title="Link to this definition">#</a></dt>
+<dd><p>Only used when moe=True. Fraction of the calibration tokens reaching an experts module below which an individual expert is quantized with round-to-nearest instead of GPTQ. MoE routing sends only a fraction of the tokens to each expert, so cold experts get a rank-deficient (or missing) Hessian for which GPTQ’s correction is driven by the damping prior rather than by data. Default is 0.005 (0.5%, matching GPTQModel’s default). This threshold measures routing skew (is this expert under-served relative to its peers?), which is scale-invariant: it does not by itself guarantee the expert’s Hessian is numerically well-formed – see moe_fallback_min_k_multiple, which measures statistical sufficiency instead. An expert falls back to RTN if it fails EITHER condition.</p>
+<p><strong>type:</strong> float</p>
+<p><strong>default_value:</strong> 0.005</p>
+<p><strong>search_defaults:</strong> None</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-moe_fallback_min_k_multiple">
+<span class="sig-name descname"><span class="pre">moe_fallback_min_k_multiple</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-moe_fallback_min_k_multiple" title="Link to this definition">#</a></dt>
+<dd><p>Only used when moe=True. Minimum number of calibration tokens an expert must have seen, expressed as a multiple of K (the expert weight’s last dimension), below which it is quantized with round-to-nearest instead of GPTQ. Each expert’s Hessian is a (K, K) matrix accumulated from its routed tokens, so rank(H) &lt;= num_tokens_seen: below K tokens, the Hessian is necessarily rank-deficient, but N &gt;= K alone does not guarantee GPTQ beats RTN – damping reweights rank-deficient directions rather than eliminating their influence, so GPTQ’s correction can still be noisier than RTN somewhat above the bare N=K floor. Default is 2.0, set past the empirically measured crossover (roughly 1x-2x K, model/config dependent) rather than at N=K itself. An expert falls back to RTN if it fails EITHER this condition or moe_fallback_threshold.</p>
+<p><strong>type:</strong> float</p>
+<p><strong>default_value:</strong> 2.0</p>
 <p><strong>search_defaults:</strong> None</p>
 </dd></dl>
 
@@ -6256,8 +6402,8 @@
 <p><strong>Input:</strong> HfModelHandler</p>
 <p><strong>Output:</strong> HfModelHandler</p>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-325">
-<span class="sig-name descname"><span class="pre">bits</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-325" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-326">
+<span class="sig-name descname"><span class="pre">bits</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-326" title="Link to this definition">#</a></dt>
 <dd><p>quantization bits. Default value is 4</p>
 <p><strong>type:</strong> olive.constants.PrecisionBits</p>
 <p><strong>default_value:</strong> 4</p>
@@ -6293,8 +6439,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-326">
-<span class="sig-name descname"><span class="pre">group_size</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-326" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-327">
+<span class="sig-name descname"><span class="pre">group_size</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-327" title="Link to this definition">#</a></dt>
 <dd><p>Block size for quantization. Default value is 128.</p>
 <p><strong>type:</strong> int</p>
 <p><strong>default_value:</strong> 128</p>
@@ -6302,8 +6448,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-327">
-<span class="sig-name descname"><span class="pre">damp_percent</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-327" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-328">
+<span class="sig-name descname"><span class="pre">damp_percent</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-328" title="Link to this definition">#</a></dt>
 <dd><p>Damping factor for quantization. Default value is 0.01.</p>
 <p><strong>type:</strong> float</p>
 <p><strong>default_value:</strong> 0.01</p>
@@ -6329,8 +6475,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-328">
-<span class="sig-name descname"><span class="pre">desc_act</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-328" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-329">
+<span class="sig-name descname"><span class="pre">desc_act</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-329" title="Link to this definition">#</a></dt>
 <dd><p>Use descriptive activation for quantization. Default value is False.</p>
 <p><strong>type:</strong> bool</p>
 <p><strong>default_value:</strong> False</p>
@@ -6338,8 +6484,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-329">
-<span class="sig-name descname"><span class="pre">sym</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-329" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-330">
+<span class="sig-name descname"><span class="pre">sym</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-330" title="Link to this definition">#</a></dt>
 <dd><p>Symmetric quantization. Default value is False.</p>
 <p><strong>type:</strong> bool</p>
 <p><strong>default_value:</strong> False</p>
@@ -6347,8 +6493,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-330">
-<span class="sig-name descname"><span class="pre">data_config</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-330" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-331">
+<span class="sig-name descname"><span class="pre">data_config</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-331" title="Link to this definition">#</a></dt>
 <dd><p>Data config for quantization. If not provided, wikitext train data will be used.</p>
 <p><strong>type:</strong> olive.data.config.DataConfig | dict</p>
 <p><strong>default_value:</strong> None</p>
@@ -6362,8 +6508,8 @@
 <p><strong>Input:</strong> handler.hf.HfModelHandler</p>
 <p><strong>Output:</strong> handler.hf.HfModelHandler</p>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-331">
-<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-331" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-332">
+<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-332" title="Link to this definition">#</a></dt>
 <dd><p>Path to user script. The values for other parameters which were assigned function or object names will be imported from this script.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6371,8 +6517,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-332">
-<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-332" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-333">
+<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-333" title="Link to this definition">#</a></dt>
 <dd><p>Directory containing user script dependencies.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6407,8 +6553,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-333">
-<span class="sig-name descname"><span class="pre">bits</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-333" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-334">
+<span class="sig-name descname"><span class="pre">bits</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-334" title="Link to this definition">#</a></dt>
 <dd><p>The number of bits to quantize to.</p>
 <p><strong>type:</strong> olive.constants.PrecisionBits</p>
 <p><strong>default_value:</strong> 4</p>
@@ -6434,8 +6580,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-334">
-<span class="sig-name descname"><span class="pre">modules_to_not_convert</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-334" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-335">
+<span class="sig-name descname"><span class="pre">modules_to_not_convert</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-335" title="Link to this definition">#</a></dt>
 <dd><p>The list of modules to not quantize, useful for quantizing models that explicitly require to have some modules left in their original precision (e.g. Whisper encoder, Llava encoder, Mixtral gate layers). Please refer to AutoAWQ documentation for quantizing HF models.</p>
 <p><strong>type:</strong> list</p>
 <p><strong>default_value:</strong> []</p>
@@ -6452,8 +6598,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-335">
-<span class="sig-name descname"><span class="pre">data_config</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-335" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-336">
+<span class="sig-name descname"><span class="pre">data_config</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-336" title="Link to this definition">#</a></dt>
 <dd><p>Data config for quantization. If not provided, pile validation data will be used.</p>
 <p><strong>type:</strong> olive.data.config.DataConfig | dict</p>
 <p><strong>default_value:</strong> None</p>
@@ -6467,17 +6613,17 @@
 <p><strong>Input:</strong> HfModelHandler</p>
 <p><strong>Output:</strong> HfModelHandler</p>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-336">
-<span class="sig-name descname"><span class="pre">bits</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-336" title="Link to this definition">#</a></dt>
-<dd><p>quantization bits. Default value is 4</p>
+<dt class="sig sig-object std" id="cmdoption-arg-337">
+<span class="sig-name descname"><span class="pre">bits</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-337" title="Link to this definition">#</a></dt>
+<dd><p>Quantization bits: 2, 3, 4 or 8. Default value is 4; INT3 is PyTorch-only.</p>
 <p><strong>type:</strong> olive.constants.PrecisionBits</p>
 <p><strong>default_value:</strong> 4</p>
 <p><strong>search_defaults:</strong> Categorical([&lt;PrecisionBits.BITS2: 2&gt;, &lt;PrecisionBits.BITS4: 4&gt;, &lt;PrecisionBits.BITS8: 8&gt;])</p>
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-337">
-<span class="sig-name descname"><span class="pre">group_size</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-337" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-338">
+<span class="sig-name descname"><span class="pre">group_size</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-338" title="Link to this definition">#</a></dt>
 <dd><p>Block size for quantization. Default value is 128.</p>
 <p><strong>type:</strong> int</p>
 <p><strong>default_value:</strong> 128</p>
@@ -6485,8 +6631,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-338">
-<span class="sig-name descname"><span class="pre">sym</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-338" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-339">
+<span class="sig-name descname"><span class="pre">sym</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-339" title="Link to this definition">#</a></dt>
 <dd><p>Symmetric quantization. Default value is False.</p>
 <p><strong>type:</strong> bool</p>
 <p><strong>default_value:</strong> False</p>
@@ -6494,26 +6640,35 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-339">
-<span class="sig-name descname"><span class="pre">lm_head</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-339" title="Link to this definition">#</a></dt>
-<dd><p>Whether to quantize the language model head. Default value is False.</p>
+<dt class="sig sig-object std" id="cmdoption-arg-340">
+<span class="sig-name descname"><span class="pre">lm_head</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-340" title="Link to this definition">#</a></dt>
+<dd><p>Whether to quantize the language model head. Defaults to the selected component’s ownership when omitted, or False for a whole-model pass.</p>
 <p><strong>type:</strong> bool</p>
-<p><strong>default_value:</strong> False</p>
+<p><strong>default_value:</strong> None</p>
 <p><strong>search_defaults:</strong> Categorical([True, False])</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-341">
+<span class="sig-name descname"><span class="pre">quantize_vision</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-341" title="Link to this definition">#</a></dt>
+<dd><p>Whether to quantize a composite vision-language model’s vision tower. Defaults to the selected component’s ownership when omitted, or False for a whole-model pass.</p>
+<p><strong>type:</strong> bool</p>
+<p><strong>default_value:</strong> None</p>
+<p><strong>search_defaults:</strong> None</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-embeds">
 <span class="sig-name descname"><span class="pre">embeds</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-embeds" title="Link to this definition">#</a></dt>
-<dd><p>Whether to quantize the input embeddings. Default value is False.</p>
+<dd><p>Whether to quantize input embeddings. Defaults to True for a selected embedding component, or False for a whole-model pass.</p>
 <p><strong>type:</strong> bool</p>
-<p><strong>default_value:</strong> False</p>
+<p><strong>default_value:</strong> None</p>
 <p><strong>search_defaults:</strong> None</p>
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-moe">
-<span class="sig-name descname"><span class="pre">moe</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-moe" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-342">
+<span class="sig-name descname"><span class="pre">moe</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-342" title="Link to this definition">#</a></dt>
 <dd><p>Whether to quantize MoE expert modules / parameters. When False (default), every nn.Module under each experts subtree is skipped. Defaults reuse the pass-level bits/group_size/sym settings; use <code class="docutils literal notranslate"><span class="pre">overrides</span></code> to tune experts independently.</p>
 <p><strong>type:</strong> bool</p>
 <p><strong>default_value:</strong> False</p>
@@ -6521,8 +6676,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-340">
-<span class="sig-name descname"><span class="pre">modules_to_not_convert</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-340" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-343">
+<span class="sig-name descname"><span class="pre">modules_to_not_convert</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-343" title="Link to this definition">#</a></dt>
 <dd><p>Optional list of module name patterns to exclude from quantization. Plain strings use substring matching (HF semantics); entries prefixed with ‘re:’ use re.fullmatch.</p>
 <p><strong>type:</strong> list</p>
 <p><strong>default_value:</strong> None</p>
@@ -6530,8 +6685,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-341">
-<span class="sig-name descname"><span class="pre">overrides</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-341" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-344">
+<span class="sig-name descname"><span class="pre">overrides</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-344" title="Link to this definition">#</a></dt>
 <dd><p>Optional dictionary to specify overrides for specific modules. The keys are module names (literal match) or ‘re:&lt;regex&gt;’ patterns (regex fullmatch). Values are dictionaries with any of the following keys: ‘bits’, ‘symmetric’, ‘group_size’. These overrides take precedence over the overrides provided in the mixed precision info.</p>
 <p><strong>type:</strong> dict</p>
 <p><strong>default_value:</strong> None</p>
@@ -6548,8 +6703,8 @@
 <p><strong>Input:</strong> handler.hf.HfModelHandler | handler.pytorch.PyTorchModelHandler | handler.onnx.ONNXModelHandler</p>
 <p><strong>Output:</strong> handler.openvino.OpenVINOModelHandler</p>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-342">
-<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-342" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-345">
+<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-345" title="Link to this definition">#</a></dt>
 <dd><p>Path to user script. The values for other parameters which were assigned function or object names will be imported from this script.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6557,8 +6712,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-343">
-<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-343" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-346">
+<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-346" title="Link to this definition">#</a></dt>
 <dd><p>Directory containing user script dependencies.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6626,8 +6781,8 @@
 <p><strong>Input:</strong> handler.openvino.OpenVINOModelHandler</p>
 <p><strong>Output:</strong> handler.openvino.OpenVINOModelHandler</p>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-344">
-<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-344" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-347">
+<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-347" title="Link to this definition">#</a></dt>
 <dd><p>Path to user script. The values for other parameters which were assigned function or object names will be imported from this script.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6635,8 +6790,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-345">
-<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-345" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-348">
+<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-348" title="Link to this definition">#</a></dt>
 <dd><p>Directory containing user script dependencies.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6644,8 +6799,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-346">
-<span class="sig-name descname"><span class="pre">extra_configs</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-346" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-349">
+<span class="sig-name descname"><span class="pre">extra_configs</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-349" title="Link to this definition">#</a></dt>
 <dd><p>Extra configurations for OpenVINO model conversion. extra_config can be set by passing a dictionary where key is the parameter name, and the value is the parameter value. Please check Conversion Parameters documentation for more details: <a class="reference external" href="https://docs.openvino.ai/2025/openvino-workflow/model-preparation/conversion-parameters.html">https://docs.openvino.ai/2025/openvino-workflow/model-preparation/conversion-parameters.html</a></p>
 <p><strong>type:</strong> dict</p>
 <p><strong>default_value:</strong> None</p>
@@ -6653,8 +6808,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-347">
-<span class="sig-name descname"><span class="pre">input_shapes</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-347" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-350">
+<span class="sig-name descname"><span class="pre">input_shapes</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-350" title="Link to this definition">#</a></dt>
 <dd><p>Reshapes the model with given inputs. It configures dynamic and static dimensions in model inputs depending on your inference requirements. Static parameter is required to be enabled if static dimensions are required.</p>
 <p><strong>type:</strong> list</p>
 <p><strong>default_value:</strong> None</p>
@@ -6671,8 +6826,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-348">
-<span class="sig-name descname"><span class="pre">static</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-348" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-351">
+<span class="sig-name descname"><span class="pre">static</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-351" title="Link to this definition">#</a></dt>
 <dd><p>Create a static model instead of a dynamic model.Enabled by default.</p>
 <p><strong>type:</strong> bool</p>
 <p><strong>default_value:</strong> False</p>
@@ -6694,8 +6849,8 @@
 <p><strong>Input:</strong> handler.openvino.OpenVINOModelHandler | handler.onnx.ONNXModelHandler</p>
 <p><strong>Output:</strong> handler.openvino.OpenVINOModelHandler | handler.onnx.ONNXModelHandler</p>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-349">
-<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-349" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-352">
+<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-352" title="Link to this definition">#</a></dt>
 <dd><p>Path to user script. The values for other parameters which were assigned function or object names will be imported from this script.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6703,8 +6858,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-350">
-<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-350" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-353">
+<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-353" title="Link to this definition">#</a></dt>
 <dd><p>Directory containing user script dependencies.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6712,16 +6867,16 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-351">
-<span class="sig-name descname"><span class="pre">data_config</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-351" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-354">
+<span class="sig-name descname"><span class="pre">data_config</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-354" title="Link to this definition">#</a></dt>
 <dd><p>Data config for calibration.</p>
 <p><strong>type:</strong> olive.data.config.DataConfig | dict</p>
 <p><strong>required:</strong> True</p>
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-352">
-<span class="sig-name descname"><span class="pre">model_type</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-352" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-355">
+<span class="sig-name descname"><span class="pre">model_type</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-355" title="Link to this definition">#</a></dt>
 <dd><p>Used to specify quantization scheme required for specific type of the model. ‘TRANSFORMER’ is the only supported special quantization scheme to preserve accuracy after quantization of Transformer models (BERT, DistilBERT, etc.). None is default.</p>
 <p><strong>type:</strong> olive.passes.openvino.quantization.ModelTypeEnum</p>
 <p><strong>default_value:</strong> None</p>
@@ -6801,8 +6956,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-353">
-<span class="sig-name descname"><span class="pre">extra_configs</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-353" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-356">
+<span class="sig-name descname"><span class="pre">extra_configs</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-356" title="Link to this definition">#</a></dt>
 <dd><p>Extra configurations for OpenVINO model quantization. Please refer to <a class="reference external" href="https://docs.openvino.ai/2023.3/basic_quantization_flow.html#tune-quantization-parameters">https://docs.openvino.ai/2023.3/basic_quantization_flow.html#tune-quantization-parameters</a>.</p>
 <p><strong>type:</strong> list[dict]</p>
 <p><strong>default_value:</strong> None</p>
@@ -6810,8 +6965,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-354">
-<span class="sig-name descname"><span class="pre">reuse_cache</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-354" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-357">
+<span class="sig-name descname"><span class="pre">reuse_cache</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-357" title="Link to this definition">#</a></dt>
 <dd><p>Reuse cache of previous passes to reduce storage footprint.</p>
 <p><strong>type:</strong> bool</p>
 <p><strong>default_value:</strong> False</p>
@@ -6824,8 +6979,8 @@
 <p><strong>Input:</strong> handler.base.OliveModelHandler</p>
 <p><strong>Output:</strong> handler.base.OliveModelHandler</p>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-355">
-<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-355" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-358">
+<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-358" title="Link to this definition">#</a></dt>
 <dd><p>Path to user script. The values for other parameters which were assigned function or object names will be imported from this script.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6833,8 +6988,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-356">
-<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-356" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-359">
+<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-359" title="Link to this definition">#</a></dt>
 <dd><p>Directory containing user script dependencies.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6842,16 +6997,16 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-357">
-<span class="sig-name descname"><span class="pre">data_config</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-357" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-360">
+<span class="sig-name descname"><span class="pre">data_config</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-360" title="Link to this definition">#</a></dt>
 <dd><p>Data config for calibration.</p>
 <p><strong>type:</strong> olive.data.config.DataConfig | dict</p>
 <p><strong>required:</strong> True</p>
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-358">
-<span class="sig-name descname"><span class="pre">model_type</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-358" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-361">
+<span class="sig-name descname"><span class="pre">model_type</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-361" title="Link to this definition">#</a></dt>
 <dd><p>Used to specify quantization scheme required for specific type of the model. ‘TRANSFORMER’ is the only supported special quantization scheme to preserve accuracy after quantization of Transformer models (BERT, DistilBERT, etc.). None is default.</p>
 <p><strong>type:</strong> olive.passes.openvino.quantization.ModelTypeEnum</p>
 <p><strong>default_value:</strong> None</p>
@@ -6859,8 +7014,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-359">
-<span class="sig-name descname"><span class="pre">preset</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-359" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-362">
+<span class="sig-name descname"><span class="pre">preset</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-362" title="Link to this definition">#</a></dt>
 <dd><p>Defines quantization scheme for the model. Supported values: ‘PERFORMANCE’, ‘MIXED’.</p>
 <p><strong>type:</strong> olive.passes.openvino.quantization.PresetEnum</p>
 <p><strong>default_value:</strong> PERFORMANCE</p>
@@ -6868,8 +7023,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-360">
-<span class="sig-name descname"><span class="pre">ignored_scope</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-360" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-363">
+<span class="sig-name descname"><span class="pre">ignored_scope</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-363" title="Link to this definition">#</a></dt>
 <dd><p>This parameter can be used to exclude some layers based on their names, types, and/or patterns from the quantization process to preserve the model accuracy. Please refer to <a class="reference external" href="https://docs.openvino.ai/2023.3/basic_quantization_flow.html#tune-quantization-parameters.If">https://docs.openvino.ai/2023.3/basic_quantization_flow.html#tune-quantization-parameters.If</a> multiple ignored_scope_types are provided, ignored_scope should be a list of lists, where each inner list corresponds to a specific ignored_scope_type in the same order.</p>
 <p><strong>type:</strong> list[str] | list[list[str]]</p>
 <p><strong>default_value:</strong> None</p>
@@ -6877,8 +7032,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-361">
-<span class="sig-name descname"><span class="pre">ignored_scope_type</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-361" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-364">
+<span class="sig-name descname"><span class="pre">ignored_scope_type</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-364" title="Link to this definition">#</a></dt>
 <dd><p>Defines the type(s) of the ignored scope. Supported values: ‘names’, ‘types’, ‘patterns’.</p>
 <p><strong>type:</strong> olive.passes.openvino.ov_utils.IgnoreScopeTypeEnum | list[olive.passes.openvino.ov_utils.IgnoreScopeTypeEnum]</p>
 <p><strong>default_value:</strong> None</p>
@@ -6886,8 +7041,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-362">
-<span class="sig-name descname"><span class="pre">target_device</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-362" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-365">
+<span class="sig-name descname"><span class="pre">target_device</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-365" title="Link to this definition">#</a></dt>
 <dd><p>Target device for the model. Supported values: ‘any’, ‘cpu’, ‘gpu’, ‘cpu_spr’, ‘npu’. Default value is the same as the accelerator type of this workflow run.</p>
 <p><strong>type:</strong> olive.hardware.accelerator.Device</p>
 <p><strong>default_value:</strong> cpu</p>
@@ -6895,8 +7050,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-363">
-<span class="sig-name descname"><span class="pre">transform_fn</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-363" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-366">
+<span class="sig-name descname"><span class="pre">transform_fn</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-366" title="Link to this definition">#</a></dt>
 <dd><p>Transform function for the input data.</p>
 <p><strong>type:</strong> Callable | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6904,8 +7059,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-364">
-<span class="sig-name descname"><span class="pre">validation_func</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-364" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-367">
+<span class="sig-name descname"><span class="pre">validation_func</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-367" title="Link to this definition">#</a></dt>
 <dd><p>Used to compute accuracy metric. Validation function receives openvino.runtime.CompiledModel object  or onnxruntime.OnnxModel object and validation dataloader and returns accuracy metric value.</p>
 <p><strong>type:</strong> Callable | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6913,8 +7068,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-365">
-<span class="sig-name descname"><span class="pre">max_drop</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-365" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-368">
+<span class="sig-name descname"><span class="pre">max_drop</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-368" title="Link to this definition">#</a></dt>
 <dd><p>Defines the accuracy drop threshold. The quantization process stops when the degradation of accuracy metric on the validation dataset is less than the max_drop. NNCF will stop the quantization and report an error if the max_drop value can’t be reached. The default value is 0.01.</p>
 <p><strong>type:</strong> float</p>
 <p><strong>default_value:</strong> 0.01</p>
@@ -6922,8 +7077,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-366">
-<span class="sig-name descname"><span class="pre">drop_type</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-366" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-369">
+<span class="sig-name descname"><span class="pre">drop_type</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-369" title="Link to this definition">#</a></dt>
 <dd><p>Defines the type of the max_drop. Supported values: ‘ABSOLUTE’, ‘RELATIVE’. The default value is ‘ABSOLUTE’.</p>
 <p><strong>type:</strong> olive.passes.openvino.quantization.DropTypeEnum</p>
 <p><strong>default_value:</strong> ABSOLUTE</p>
@@ -6931,8 +7086,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-367">
-<span class="sig-name descname"><span class="pre">extra_configs</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-367" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-370">
+<span class="sig-name descname"><span class="pre">extra_configs</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-370" title="Link to this definition">#</a></dt>
 <dd><p>Extra configurations for OpenVINO model quantization. Please refer to <a class="reference external" href="https://docs.openvino.ai/2023.3/basic_quantization_flow.html#tune-quantization-parameters">https://docs.openvino.ai/2023.3/basic_quantization_flow.html#tune-quantization-parameters</a>.</p>
 <p><strong>type:</strong> list[dict]</p>
 <p><strong>default_value:</strong> None</p>
@@ -6940,8 +7095,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-368">
-<span class="sig-name descname"><span class="pre">reuse_cache</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-368" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-371">
+<span class="sig-name descname"><span class="pre">reuse_cache</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-371" title="Link to this definition">#</a></dt>
 <dd><p>Reuse cache of previous passes to reduce storage footprint.</p>
 <p><strong>type:</strong> bool</p>
 <p><strong>default_value:</strong> False</p>
@@ -6957,8 +7112,8 @@
 <p><strong>Input:</strong> handler.hf.HfModelHandler | handler.onnx.ONNXModelHandler | handler.openvino.OpenVINOModelHandler</p>
 <p><strong>Output:</strong> handler.openvino.OpenVINOModelHandler | handler.onnx.ONNXModelHandler | handler.composite.CompositeModelHandler</p>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-369">
-<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-369" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-372">
+<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-372" title="Link to this definition">#</a></dt>
 <dd><p>Path to user script. The values for other parameters which were assigned function or object names will be imported from this script.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6966,8 +7121,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-370">
-<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-370" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-373">
+<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-373" title="Link to this definition">#</a></dt>
 <dd><p>Directory containing user script dependencies.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -6975,8 +7130,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-371">
-<span class="sig-name descname"><span class="pre">data_config</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-371" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-374">
+<span class="sig-name descname"><span class="pre">data_config</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-374" title="Link to this definition">#</a></dt>
 <dd><p>Data config for compression.</p>
 <p><strong>type:</strong> olive.data.config.DataConfig | dict</p>
 <p><strong>default_value:</strong> None</p>
@@ -6984,8 +7139,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-372">
-<span class="sig-name descname"><span class="pre">ignored_scope</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-372" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-375">
+<span class="sig-name descname"><span class="pre">ignored_scope</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-375" title="Link to this definition">#</a></dt>
 <dd><p>This parameter can be used to exclude some layers based on their names, types, and/or patterns from the compression process to preserve the model accuracy. Please refer to <a class="reference external" href="https://docs.openvino.ai/2025/openvino-workflow/model-optimization-guide/quantizing-models-post-training/basic-quantization-flow.html#tune-quantization-parameters.If">https://docs.openvino.ai/2025/openvino-workflow/model-optimization-guide/quantizing-models-post-training/basic-quantization-flow.html#tune-quantization-parameters.If</a> multiple ignored_scope_types are provided, ignored_scope should be a list of lists, where each inner list corresponds to a specific ignored_scope_type in the same order.</p>
 <p><strong>type:</strong> list[str] | list[list[str]]</p>
 <p><strong>default_value:</strong> None</p>
@@ -6993,8 +7148,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-373">
-<span class="sig-name descname"><span class="pre">ignored_scope_type</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-373" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-376">
+<span class="sig-name descname"><span class="pre">ignored_scope_type</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-376" title="Link to this definition">#</a></dt>
 <dd><p>Defines the type(s) of the ignored scope. Supported values: ‘names’, ‘types’, ‘patterns’.</p>
 <p><strong>type:</strong> olive.passes.openvino.ov_utils.IgnoreScopeTypeEnum | list[olive.passes.openvino.ov_utils.IgnoreScopeTypeEnum]</p>
 <p><strong>default_value:</strong> None</p>
@@ -7002,8 +7157,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-374">
-<span class="sig-name descname"><span class="pre">target_device</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-374" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-377">
+<span class="sig-name descname"><span class="pre">target_device</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-377" title="Link to this definition">#</a></dt>
 <dd><p>Target device for the model. Supported values: ‘any’, ‘cpu’, ‘gpu’, ‘cpu_spr’, ‘npu’. Default value is the same as the accelerator type of this workflow run.</p>
 <p><strong>type:</strong> olive.hardware.accelerator.Device</p>
 <p><strong>default_value:</strong> cpu</p>
@@ -7011,8 +7166,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-375">
-<span class="sig-name descname"><span class="pre">transform_fn</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-375" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-378">
+<span class="sig-name descname"><span class="pre">transform_fn</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-378" title="Link to this definition">#</a></dt>
 <dd><p>Transform function for the input data.</p>
 <p><strong>type:</strong> Callable | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -7020,8 +7175,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-376">
-<span class="sig-name descname"><span class="pre">extra_args</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-376" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-379">
+<span class="sig-name descname"><span class="pre">extra_args</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-379" title="Link to this definition">#</a></dt>
 <dd><p>Extra arguments to pass to the <cite>nncf.compress_weights()</cite> function.</p>
 <p><strong>type:</strong> dict</p>
 <p><strong>default_value:</strong> None</p>
@@ -7038,8 +7193,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-377">
-<span class="sig-name descname"><span class="pre">reuse_cache</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-377" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-380">
+<span class="sig-name descname"><span class="pre">reuse_cache</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-380" title="Link to this definition">#</a></dt>
 <dd><p>Reuse cache of previous passes to reduce storage footprint.</p>
 <p><strong>type:</strong> bool</p>
 <p><strong>default_value:</strong> False</p>
@@ -7053,8 +7208,8 @@
 <p><strong>Input:</strong> handler.openvino.OpenVINOModelHandler</p>
 <p><strong>Output:</strong> handler.onnx.ONNXModelHandler</p>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-378">
-<span class="sig-name descname"><span class="pre">target_device</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-378" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-381">
+<span class="sig-name descname"><span class="pre">target_device</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-381" title="Link to this definition">#</a></dt>
 <dd><p>Device the encapsulated model should run on. Available devices are cpu, gpu, npu.</p>
 <p><strong>type:</strong> olive.hardware.accelerator.Device</p>
 <p><strong>default_value:</strong> cpu</p>
@@ -7089,8 +7244,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-379">
-<span class="sig-name descname"><span class="pre">reuse_cache</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-379" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-382">
+<span class="sig-name descname"><span class="pre">reuse_cache</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-382" title="Link to this definition">#</a></dt>
 <dd><p>Reuse cache of previous passes to reduce storage footprint.</p>
 <p><strong>type:</strong> bool</p>
 <p><strong>default_value:</strong> False</p>
@@ -7113,8 +7268,8 @@
 <p><strong>Input:</strong> handler.hf.HfModelHandler</p>
 <p><strong>Output:</strong> handler.openvino.OpenVINOModelHandler | handler.composite.CompositeModelHandler</p>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-380">
-<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-380" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-383">
+<span class="sig-name descname"><span class="pre">user_script</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-383" title="Link to this definition">#</a></dt>
 <dd><p>Path to user script. The values for other parameters which were assigned function or object names will be imported from this script.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -7122,8 +7277,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-381">
-<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-381" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-384">
+<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-384" title="Link to this definition">#</a></dt>
 <dd><p>Directory containing user script dependencies.</p>
 <p><strong>type:</strong> pathlib.Path | str</p>
 <p><strong>default_value:</strong> None</p>
@@ -7131,8 +7286,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-382">
-<span class="sig-name descname"><span class="pre">components</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-382" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-385">
+<span class="sig-name descname"><span class="pre">components</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-385" title="Link to this definition">#</a></dt>
 <dd><p>List of component models to export. E.g. [‘decoder_model’, ‘decoder_with_past_model’]. None means export all components.</p>
 <p><strong>type:</strong> list[str]</p>
 <p><strong>default_value:</strong> None</p>
@@ -7140,8 +7295,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-383">
-<span class="sig-name descname"><span class="pre">device</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-383" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-386">
+<span class="sig-name descname"><span class="pre">device</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-386" title="Link to this definition">#</a></dt>
 <dd><p>The device to use to do the export. Defaults to ‘cpu’.This is the parameter that is directly passed to Optimum Intel export function in certain cases.</p>
 <p><strong>type:</strong> olive.hardware.accelerator.Device</p>
 <p><strong>default_value:</strong> cpu</p>
@@ -7149,8 +7304,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-384">
-<span class="sig-name descname"><span class="pre">extra_args</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-384" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-387">
+<span class="sig-name descname"><span class="pre">extra_args</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-387" title="Link to this definition">#</a></dt>
 <dd><p>Extra arguments to pass to the <cite>optimum.exporters.openvino.main_export</cite> function.</p>
 <p><strong>type:</strong> dict</p>
 <p><strong>default_value:</strong> None</p>
@@ -7197,8 +7352,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-385">
-<span class="sig-name descname"><span class="pre">extra_args</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-385" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-388">
+<span class="sig-name descname"><span class="pre">extra_args</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-388" title="Link to this definition">#</a></dt>
 <dd><p>Extra arguments to pass to qnn-[framework]-converter tool, e.g. –show_unconsumed_nodes –custom_io CUSTOM_IO. See the documentation for more details: <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-63442-50/tools.html">https://docs.qualcomm.com/bundle/publicresource/topics/80-63442-50/tools.html</a></p>
 <p><strong>type:</strong> str</p>
 <p><strong>default_value:</strong> None</p>
@@ -7240,8 +7395,8 @@
 <p><strong>Input:</strong> handler.qnn.QNNModelHandler</p>
 <p><strong>Output:</strong> handler.qnn.QNNModelHandler</p>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-386">
-<span class="sig-name descname"><span class="pre">backend</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-386" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-389">
+<span class="sig-name descname"><span class="pre">backend</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-389" title="Link to this definition">#</a></dt>
 <dd><p>Path to a QNN backend .so library to create the context binary.</p>
 <p><strong>type:</strong> str</p>
 <p><strong>required:</strong> True</p>
@@ -7257,8 +7412,8 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-387">
-<span class="sig-name descname"><span class="pre">extra_args</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-387" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-arg-390">
+<span class="sig-name descname"><span class="pre">extra_args</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-390" title="Link to this definition">#</a></dt>
 <dd><p>Extra arguments to qnn-context-binary-generator</p>
 <p><strong>type:</strong> str</p>
 <p><strong>default_value:</strong> None</p>
@@ -7421,8 +7576,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -7448,7 +7603,7 @@
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
 </p></div>
       
     </div>

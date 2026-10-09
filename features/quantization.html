@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -27,8 +26,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -37,10 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/header.css?v=5dcc4e7b" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -52,7 +51,7 @@
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/quantization';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = './_static/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'main';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -64,6 +63,7 @@
     <link rel="next" title="Shared Cache" href="shared-model-cache.html" />
     <link rel="prev" title="Diffusion Model LoRA Training" href="sd-lora.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="main" />
   
@@ -113,7 +113,7 @@
   
     <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
   </button>
   
@@ -216,7 +216,7 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
  <i class="fa-solid fa-magnifying-glass"></i>
  <span class="search-button__default-text">Search</span>
  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -251,7 +251,7 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
  <i class="fa-solid fa-magnifying-glass"></i>
  <span class="search-button__default-text">Search</span>
  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -260,7 +260,7 @@
   
 
   
-    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
     </button>
   
@@ -434,12 +434,14 @@
 <p>Olive integrates <a class="reference external" href="https://github.com/AutoGPTQ/AutoGPTQ">AutoGPTQ</a> for quantization.</p>
 <p>AutoGPTQ is an easy-to-use LLM quantization package with user-friendly APIs, based on GPTQ algorithm (weight-only quantization). With GPTQ quantization, you can quantize your favorite language model to 8, 4, 3 or even 2 bits. This comes without a big drop of performance and with faster inference speed. This is supported by most GPU hardwares.</p>
 <p>Olive consolidates the GPTQ quantization into a single pass called GptqQuantizer which supports tune GPTQ quantization with hyperparameters for trade-off between accuracy and speed.</p>
+<p>The bit widths above describe the upstream library. Olive’s <code class="docutils literal notranslate"><span class="pre">GptqQuantizer</span></code> export path does
+not support INT3; use the native <code class="docutils literal notranslate"><span class="pre">Gptq</span></code> pass for <a class="reference internal" href="#native-int3-checkpoints"><span class="xref myst">INT3 PyTorch checkpoints</span></a>.</p>
 <p>Please refer to <a class="reference internal" href="../reference/pass.html#gptq-quantizer"><span class="std std-ref">GptqQuantizer</span></a> for more details about the pass and its config parameters.</p>
 <section id="example-configuration">
 <h3>Example Configuration<a class="headerlink" href="#example-configuration" title="Link to this heading">#</a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GptqQuantizer&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wikitext2_train&quot;</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GptqQuantizer"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wikitext2_train"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -453,8 +455,8 @@
 <section id="id1">
 <h3>Example Configuration<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AutoAWQQuantizer&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;bits&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AutoAWQQuantizer"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -467,8 +469,8 @@
 <section id="id2">
 <h3>Example Configuration<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QuaRot&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;rotate_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hadamard&quot;</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QuaRot"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"rotate_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hadamard"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -481,9 +483,9 @@
 <section id="id3">
 <h3>Example Configuration<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SpinQuant&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;rotate_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hadamard&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;a_bits&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SpinQuant"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"rotate_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hadamard"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"a_bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -496,7 +498,7 @@
 <section id="id4">
 <h3>Example Configuration<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OnnxBlockWiseRtnQuantization&quot;</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OnnxBlockWiseRtnQuantization"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -547,6 +549,24 @@ Attempting to <code class="docutils literal notranslate"><span class="pre">torch
 Mobius / ORT GenAI <code class="docutils literal notranslate"><span class="pre">ModelBuilder</span></code> for the experts. Non-MoE parts (attention projections, router/gate,
 embeddings, lm_head) still export through the existing <code class="docutils literal notranslate"><span class="pre">MatMulNBits</span></code> / <code class="docutils literal notranslate"><span class="pre">GatherBlockQuantized</span></code> path.</p>
 </section>
+<section id="moe-and-native-pytorch-inference-force-the-eager-experts-implementation">
+<h3><code class="docutils literal notranslate"><span class="pre">moe</span></code> and native PyTorch inference: force the <code class="docutils literal notranslate"><span class="pre">&quot;eager&quot;</span></code> experts implementation<a class="headerlink" href="#moe-and-native-pytorch-inference-force-the-eager-experts-implementation" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">transformers</span></code> lets a loaded MoE model pick its runtime forward strategy independently of the
+checkpoint’s on-disk layout, via <code class="docutils literal notranslate"><span class="pre">model.set_experts_implementation(...)</span></code> / <code class="docutils literal notranslate"><span class="pre">config._experts_implementation</span></code>
+(<code class="docutils literal notranslate"><span class="pre">&quot;eager&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;grouped_mm&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;batched_mm&quot;</span></code>, …). Some non-<code class="docutils literal notranslate"><span class="pre">&quot;eager&quot;</span></code> strategies (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;grouped_mm&quot;</span></code>, which
+<code class="docutils literal notranslate"><span class="pre">transformers</span></code> may auto-select even on CPU) call <code class="docutils literal notranslate"><span class="pre">weight.transpose(-2,</span> <span class="pre">-1)</span></code> on the fused-experts weight
+before dispatching to their matmul kernel. Because Olive’s 3D fused-expert <code class="docutils literal notranslate"><span class="pre">QuantTensor</span></code> is storage-only
+(see above) and cannot represent a transpose without a lossy unpack/re-quantize round trip, this raises a
+<code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code> at inference time – even for architectures whose checkpoint layout (<code class="docutils literal notranslate"><span class="pre">is_transposed=False</span></code>)
+is fully supported for quantization.</p>
+<p><strong>Workaround</strong>: after loading a <code class="docutils literal notranslate"><span class="pre">moe=True</span></code>-quantized checkpoint for native PyTorch inference (as opposed to
+consuming it via Mobius / ORT GenAI <code class="docutils literal notranslate"><span class="pre">ModelBuilder</span></code>), force the eager path once, before running any forward
+pass:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">set_experts_implementation</span><span class="p">(</span><span class="s2">"eager"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is tracked as a follow-up in <a class="reference external" href="https://github.com/microsoft/Olive/issues/2619">#2619</a>.</p>
+</section>
 <section id="modules-to-not-convert-and-overrides">
 <h3><code class="docutils literal notranslate"><span class="pre">modules_to_not_convert</span></code> and <code class="docutils literal notranslate"><span class="pre">overrides</span></code><a class="headerlink" href="#modules-to-not-convert-and-overrides" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">modules_to_not_convert</span></code> lists module-name patterns to exclude entirely, and <code class="docutils literal notranslate"><span class="pre">overrides</span></code> maps module-name
@@ -577,18 +597,68 @@ specific accordingly.</p>
 <section id="id5">
 <h3>Example Configuration<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rtn&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;bits&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;group_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;sym&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;embeds&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;moe&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;overrides&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;re:.*\\.experts\\..*&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;bits&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;group_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rtn"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"group_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"sym"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"embeds"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"moe"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"overrides"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"re:.*\\.experts\\..*"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nt">"group_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
+<section id="mixed-width-fused-moe-checkpoint-recipe">
+<h3>Mixed-width fused MoE checkpoint recipe<a class="headerlink" href="#mixed-width-fused-moe-checkpoint-recipe" title="Link to this heading">#</a></h3>
+<p>For fused Qwen3/Qwen3.5-style routed experts, RTN can produce a deterministic
+checkpoint with all otherwise eligible weights at INT4, expert
+<code class="docutils literal notranslate"><span class="pre">gate_up_proj</span></code> (FC1 gate/up) at INT2, and expert <code class="docutils literal notranslate"><span class="pre">down_proj</span></code> (FC2) at INT4.
+Qwen3 and text-only Qwen3.5 checkpoints use the <code class="docutils literal notranslate"><span class="pre">model.layers</span></code> source prefix:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rtn"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"group_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"sym"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"moe"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"overrides"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"re:model\\.layers\\.\\d+\\.mlp\\.experts\\.gate_up_proj"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"re:model\\.layers\\.\\d+\\.mlp\\.experts\\.down_proj"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Qwen3.5 vision-language checkpoints instead nest the text decoder under
+<code class="docutils literal notranslate"><span class="pre">model.language_model.layers</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rtn"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"group_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"sym"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"moe"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"overrides"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"re:model\\.language_model\\.layers\\.\\d+\\.mlp\\.experts\\.gate_up_proj"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"re:model\\.language_model\\.layers\\.\\d+\\.mlp\\.experts\\.down_proj"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The explicit FC2 override documents the intended contract even though it has
+the same value as the pass default and may therefore be omitted from the
+serialized Hugging Face quantization config. Its effective assignment remains
+INT4 after reload. Exact module-name overrides may be used instead of the two
+disjoint regular expressions.</p>
+<p>This recipe qualifies Olive checkpoint materialization and persistence only;
+it does not qualify ONNX export or inference. Downstream use additionally
+requires an exporter or model builder that maps the per-projection settings to
+the mixed-width <code class="docutils literal notranslate"><span class="pre">com.microsoft::QMoE</span></code> contract, and an ONNX Runtime execution
+provider that implements that contract. Olive’s ORT GenAI ModelBuilder
+currently rejects checkpoints where <code class="docutils literal notranslate"><span class="pre">quantization_config.moe</span></code> is true, and
+Mobius mixed-width QMoE export support is tracked separately in
+<a class="reference external" href="https://github.com/onnxruntime/mobius/issues/735">onnxruntime/mobius#735</a>.
+ONNX Runtime currently validates the mixed-width schema and packed layouts but
+does not execute mixed-width QMoE.</p>
 </section>
 <section id="composing-with-gptq">
 <h3>Composing with <code class="docutils literal notranslate"><span class="pre">Gptq</span></code><a class="headerlink" href="#composing-with-gptq" title="Link to this heading">#</a></h3>
@@ -596,8 +666,8 @@ specific accordingly.</p>
 calibration-based pass such as <code class="docutils literal notranslate"><span class="pre">Gptq</span></code> first, then cover the parts <code class="docutils literal notranslate"><span class="pre">Gptq</span></code> doesn’t handle (embeddings, lm_head,
 MoE experts) with <code class="docutils literal notranslate"><span class="pre">Rtn</span></code>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gptq&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rtn&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;moe&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;embeds&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gptq"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rtn"</span><span class="p">,</span><span class="w"> </span><span class="nt">"moe"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"embeds"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -618,13 +688,142 @@ classes cannot be reloaded through Olive’s own HF quantizer</strong> — this 
 <p>There is no migration shim for either case (consistent with every prior packing-format change to this module).
 Re-run the <code class="docutils literal notranslate"><span class="pre">Rtn</span></code> pass on the original full-precision model to regenerate a checkpoint in the current format.</p>
 </section>
-<section id="bit-quantization-is-not-exportable-to-onnx">
-<h3>2-bit quantization is not exportable to ONNX<a class="headerlink" href="#bit-quantization-is-not-exportable-to-onnx" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">Rtn</span></code> supports <code class="docutils literal notranslate"><span class="pre">bits</span></code> in <code class="docutils literal notranslate"><span class="pre">{2,</span> <span class="pre">4,</span> <span class="pre">8}</span></code> for the PyTorch quantized-checkpoint path, but the ONNX export-compat path
+<section id="native-int3-checkpoints">
+<h3>Native INT3 checkpoints<a class="headerlink" href="#native-int3-checkpoints" title="Link to this heading">#</a></h3>
+<p>The native <code class="docutils literal notranslate"><span class="pre">Rtn</span></code>, <code class="docutils literal notranslate"><span class="pre">KQuant</span></code>, and <code class="docutils literal notranslate"><span class="pre">Gptq</span></code> passes support <code class="docutils literal notranslate"><span class="pre">bits</span></code> in <code class="docutils literal notranslate"><span class="pre">{2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">8}</span></code>.
+Set <code class="docutils literal notranslate"><span class="pre">&quot;bits&quot;:</span> <span class="pre">3</span></code> at pass level or in a per-module override. <code class="docutils literal notranslate"><span class="pre">SelectiveMixedPrecision</span></code>
+also accepts <code class="docutils literal notranslate"><span class="pre">bits=3</span></code>; default search candidates and default precisions are unchanged.
+<code class="docutils literal notranslate"><span class="pre">AutoClip</span></code> accepts INT3 settings for quantization-aware clipping but still outputs floating-point
+weights; follow it with a native quantization pass to produce an INT3 checkpoint.
+The existing algorithms compute quantization parameters for eight unsigned codes
+(<code class="docutils literal notranslate"><span class="pre">0</span></code> through <code class="docutils literal notranslate"><span class="pre">7</span></code>). Symmetric INT3 uses the implicit zero point <code class="docutils literal notranslate"><span class="pre">4</span></code>; asymmetric
+quantization stores per-group zero points. Scales remain floating-point.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rtn"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"group_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"sym"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>INT3 uses a tightly packed, LSB-first bitstream along each weight’s last dimension.
+Code <code class="docutils literal notranslate"><span class="pre">i</span></code> starts at bit offset <code class="docutils literal notranslate"><span class="pre">3*i</span></code>, so codes can cross byte boundaries. Each row
+starts at a new byte; unused high bits of its final byte are zero. For example,
+codes <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7]</span></code> produce bytes <code class="docutils literal notranslate"><span class="pre">88</span> <span class="pre">C6</span> <span class="pre">FA</span></code> (hexadecimal).
+A row of length <code class="docutils literal notranslate"><span class="pre">K</span></code> occupies <code class="docutils literal notranslate"><span class="pre">ceil(3*K/8)</span></code> bytes. Asymmetric zero points use the
+same packing along the last dimension of the scales shape, independently of the
+weight rows. Existing INT2/INT4/INT8 checkpoint layouts are unchanged.
+Unpacking validates the packed buffer shape against the logical shape and bit width;
+incompatible buffer sizes or differently padded layouts are rejected.</p>
+<p>The checkpoint stores ordinary <code class="docutils literal notranslate"><span class="pre">*_qweight</span></code>, <code class="docutils literal notranslate"><span class="pre">*_scales</span></code>, and optional <code class="docutils literal notranslate"><span class="pre">*_qzeros</span></code>
+buffers in safetensors and quantization settings in <code class="docutils literal notranslate"><span class="pre">config.json</span></code>; HF loading
+reconstructs the <code class="docutils literal notranslate"><span class="pre">QuantTensor</span></code>. INT3 supports the same targets and restrictions
+as each native pass, including opt-in embeddings for RTN/KQuant and supported
+MoE layouts. Extending an existing checkpoint with RTN/KQuant preserves weights
+already quantized at any supported width; GPTQ still requires unquantized input.
+Fused MoE execution requires the eager per-expert path. The <code class="docutils literal notranslate"><span class="pre">grouped_mm</span></code> implementation’s
+weight transposes are not supported by <code class="docutils literal notranslate"><span class="pre">QuantTensor</span></code>; select eager expert execution when
+running the loaded model.</p>
+<p>This is storage quantization: Torch eager execution unpacks and dequantizes weights
+for floating-point operations, not a dedicated INT3 kernel. The three-bit payload
+size excludes floating scales, zero points, and row padding. Model accuracy must
+be evaluated separately; support does not guarantee a speedup or a quality threshold.
+External AutoGPTQ/GptqModel/AutoAWQ export paths are not enabled for this INT3 format.</p>
+<p>INT3 ONNX export is not yet supported. Olive’s ONNX conversion, ModelBuilder, and
+MobiusBuilder reject native INT3 checkpoints rather than silently exporting dense
+weights or changing the bit width. Future integration must validate operator-specific
+packing, parameter layouts, and runtime support; a kernel’s private prepack is not
+the checkpoint format.</p>
+</section>
+<section id="bit-linear-quantization-is-not-exportable-through-onnx-conversion">
+<h3>2-bit linear quantization is not exportable through ONNX conversion<a class="headerlink" href="#bit-linear-quantization-is-not-exportable-through-onnx-conversion" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Rtn</span></code> supports <code class="docutils literal notranslate"><span class="pre">bits</span></code> in <code class="docutils literal notranslate"><span class="pre">{2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">8}</span></code> for the PyTorch quantized-checkpoint path, but the linear ONNX export-compat path
 (<code class="docutils literal notranslate"><span class="pre">QuantLinearNbit</span></code>) only supports 4-bit and 8-bit packing. Attempting to export a 2-bit <code class="docutils literal notranslate"><span class="pre">QuantTensor</span></code> to ONNX
 raises a clear <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> at export time rather than silently producing an incorrect graph; 2-bit quantization
 remains usable for PyTorch-only workflows.</p>
 </section>
+<section id="independent-q-k-v-settings">
+<h3>Independent Q/K/V settings<a class="headerlink" href="#independent-q-k-v-settings" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Rtn</span></code>, <code class="docutils literal notranslate"><span class="pre">KQuant</span></code>, and the native PyTorch <code class="docutils literal notranslate"><span class="pre">Gptq</span></code> pass honor the effective
+quantization settings of each split attention Q/K/V projection. For example,
+with <code class="docutils literal notranslate"><span class="pre">bits:</span> <span class="pre">4</span></code>, set <code class="docutils literal notranslate"><span class="pre">overrides:</span> <span class="pre">{&quot;re:.*\\.self_attn\\.v_proj&quot;:</span> <span class="pre">{&quot;bits&quot;:</span> <span class="pre">8}}</span></code>
+to quantize Q/K at 4 bits and V at 8 bits. No separate QKV flag is needed;
+the passes do not change Q/K settings to match V for a downstream exporter.
+Existing quantized weights remain locked when a follow-up pass is run.
+<code class="docutils literal notranslate"><span class="pre">SelectiveMixedPrecision</span></code> still selects its own QKV-aware plan. Exporter
+implementations are unchanged. The existing GenAI <code class="docutils literal notranslate"><span class="pre">ModelBuilder</span></code> can pack
+uniform 4/4/4 QKV and emit separate 4/4/8 projections on its standard MatMul
+path. Other layouts and execution-provider paths remain subject to each
+exporter’s existing limitations; the quantizers do not normalize settings
+to work around those limitations.</p>
+</section>
+</section>
+<section id="pytorch-native-kquant">
+<h2>PyTorch Native KQuant<a class="headerlink" href="#pytorch-native-kquant" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">KQuant</span></code> pass is a calibration-free weight quantizer that applies llama.cpp’s
+iterative weighted-least-squares k-quant search to PyTorch (Hugging Face) model
+weights. It supports the same <code class="docutils literal notranslate"><span class="pre">lm_head</span></code>, <code class="docutils literal notranslate"><span class="pre">embeds</span></code>, and <code class="docutils literal notranslate"><span class="pre">moe</span></code> category flags as
+<code class="docutils literal notranslate"><span class="pre">Rtn</span></code>; all default to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">moe=true</span></code>, classic per-expert <code class="docutils literal notranslate"><span class="pre">nn.ModuleList</span></code> layouts are supported, as are
+fused expert weights whose experts module reports <code class="docutils literal notranslate"><span class="pre">is_transposed=false</span></code> (K-last
+<code class="docutils literal notranslate"><span class="pre">(E,</span> <span class="pre">OUT,</span> <span class="pre">K)</span></code>). Transposed <code class="docutils literal notranslate"><span class="pre">(E,</span> <span class="pre">K,</span> <span class="pre">OUT)</span></code> layouts and fused implementations with a
+missing or non-boolean <code class="docutils literal notranslate"><span class="pre">is_transposed</span></code> attribute are rejected rather than risking
+quantization along the wrong dimension. Only direct 3D expert weight parameters
+are quantized; expert biases remain in full precision.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KQuant"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"group_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"moe"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="selective-mixed-precision-for-moe">
+<h2>Selective mixed precision for MoE<a class="headerlink" href="#selective-mixed-precision-for-moe" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">SelectiveMixedPrecision</span></code> can plan higher precision for routed fused experts on
+the explicitly supported Qwen3 and Qwen3.5 MoE families. Set <code class="docutils literal notranslate"><span class="pre">moe=true</span></code> to use
+either the fixed <code class="docutils literal notranslate"><span class="pre">high_precision_mlp_down</span></code> / <code class="docutils literal notranslate"><span class="pre">high_precision_mlp_down_qkv</span></code>
+heuristics or one of these score-based algorithms:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">snr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">snr_relative</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iqe</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iqe_relative</span></code></p></li>
+</ul>
+<p>Score-based selection treats each fused <code class="docutils literal notranslate"><span class="pre">experts.gate_up_proj</span></code> and
+<code class="docutils literal notranslate"><span class="pre">experts.down_proj</span></code> 3D tensor as an independent, whole-projection unit. It does
+not split a tensor by expert, and it does not split the gate and up halves of
+<code class="docutils literal notranslate"><span class="pre">gate_up_proj</span></code>. Ordinary eligible linear projections are scored alongside these
+fused units. Embeddings, routers, shared-expert gates, and targets excluded by
+the normal quantization selector are not scored. The always-active
+<code class="docutils literal notranslate"><span class="pre">shared_expert.down_proj</span></code> remains an ordinary linear target rather than receiving
+special expert treatment.</p>
+<p><code class="docutils literal notranslate"><span class="pre">kld_gradient</span></code> does not support <code class="docutils literal notranslate"><span class="pre">moe=true</span></code>: fused-expert KLD scoring is not
+implemented. The pass rejects that combination before loading or scoring the
+model; use one of the four SNR/IQE algorithms above or a fixed heuristic.</p>
+<p>MoE planning uses a double opt-in. Set <code class="docutils literal notranslate"><span class="pre">moe=true</span></code> on
+<code class="docutils literal notranslate"><span class="pre">SelectiveMixedPrecision</span></code>, then also set <code class="docutils literal notranslate"><span class="pre">moe=true</span></code> on the first MoE-capable
+PyTorch quantizer (<code class="docutils literal notranslate"><span class="pre">Rtn</span></code>, <code class="docutils literal notranslate"><span class="pre">KQuant</span></code>, or <code class="docutils literal notranslate"><span class="pre">Gptq</span></code>) that consumes the plan. When a
+fixed heuristic emits a canonical routed fused-expert override, the plan records
+<code class="docutils literal notranslate"><span class="pre">mixed_precision_info.requires_moe=true</span></code>. Score-based SNR/IQE planning with
+<code class="docutils literal notranslate"><span class="pre">moe=true</span></code> always records this requirement when fused experts are in the scoring
+universe, even if ratio budgeting promotes only ordinary dense targets: every
+fused projection still belongs to the plan at the default precision. This
+prevents the first capable consumer from silently leaving those planned targets
+in floating point. A pass without a <code class="docutils literal notranslate"><span class="pre">moe</span></code> field, such as <code class="docutils literal notranslate"><span class="pre">AutoClip</span></code>, may carry
+the plan forward, and category-only follow-up passes may use <code class="docutils literal notranslate"><span class="pre">moe=false</span></code> after a
+compatible Olive checkpoint with <code class="docutils literal notranslate"><span class="pre">moe=true</span></code> has materialized all fused expert
+targets. The metadata <code class="docutils literal notranslate"><span class="pre">default</span></code> map never enables or disables the consumer’s
+<code class="docutils literal notranslate"><span class="pre">moe</span></code> setting.</p>
+<p><code class="docutils literal notranslate"><span class="pre">requires_moe</span></code> is pass-emitted metadata, not an additional return value from the
+lower-level <code class="docutils literal notranslate"><span class="pre">get_high_precision_config</span></code> or deprecated <code class="docutils literal notranslate"><span class="pre">get_k_quant_config</span></code>
+helpers; both retain their two-value return contract.</p>
+<p>This planning metadata belongs to the Hugging Face/PyTorch pass boundary.
+Plain ONNX quantization does not consume it. This stage covers materializing the
+plan into an Olive Hugging Face/PyTorch checkpoint; export through Mobius or ORT
+GenAI <code class="docutils literal notranslate"><span class="pre">ModelBuilder</span></code> is out of scope and has not been validated. Planner
+metadata alone is not an input contract for those export paths.</p>
 </section>
 <section id="hqq">
 <h2>HQQ<a class="headerlink" href="#hqq" title="Link to this heading">#</a></h2>
@@ -633,7 +832,7 @@ remains usable for PyTorch-only workflows.</p>
 <section id="id6">
 <h3>Example Configuration<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OnnxHqqQuantization&quot;</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OnnxHqqQuantization"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -653,22 +852,22 @@ remains usable for PyTorch-only workflows.</p>
 <h3>Example Configuration<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>a. Quantize an ONNX model (static quantization with calibration data)</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QuarkQuantization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calib_data_config&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;global_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;activation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;data_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UInt8&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;calibration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Percentile&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;weight&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;data_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Int8&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;calibration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MinMax&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QuarkQuantization"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calib_data_config"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"global_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"activation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UInt8"</span><span class="p">,</span><span class="w"> </span><span class="nt">"calibration_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Percentile"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Int8"</span><span class="p">,</span><span class="w"> </span><span class="nt">"calibration_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MinMax"</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>b. Quantize a HuggingFace LLM (weight-only 4-bit with AWQ)</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QuarkQuantization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;quant_scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uint4_wo_128&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;quant_algo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;awq&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;dataset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pileval_for_awq_benchmark&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;model_export&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;hf_format&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QuarkQuantization"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"quant_scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uint4_wo_128"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"quant_algo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awq"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"dataset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pileval_for_awq_benchmark"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"model_export"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"hf_format"</span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -698,36 +897,36 @@ This preprocessing step fuses operators unsupported by QNN EP and inserts necess
 <h3>Example Configuration<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>a. Tune the parameters of the OlivePass with pre-defined searchable values</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OnnxQuantization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calib_data_config&quot;</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OnnxQuantization"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calib_data_config"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>b. Select parameters to tune</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OnnxQuantization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// select per_channel to tune with &quot;SEARCHABLE_VALUES&quot;.</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OnnxQuantization"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// select per_channel to tune with "SEARCHABLE_VALUES".</span>
 <span class="w">    </span><span class="c1">// other parameters will use the default value, not to be tuned.</span>
-<span class="w">    </span><span class="nt">&quot;per_channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SEARCHABLE_VALUES&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calib_data_config&quot;</span>
+<span class="w">    </span><span class="nt">"per_channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEARCHABLE_VALUES"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calib_data_config"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>c. Use default values of the OlivePass (no tuning in this way)</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OnnxQuantization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// set per_channel to &quot;DEFAULT_VALUE&quot;</span>
-<span class="w">    </span><span class="nt">&quot;per_channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DEFAULT_VALUE&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calib_data_config&quot;</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OnnxQuantization"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// set per_channel to "DEFAULT_VALUE"</span>
+<span class="w">    </span><span class="nt">"per_channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT_VALUE"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calib_data_config"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>d. Specify parameters with user defined values</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;onnx_quantization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OnnxQuantization&quot;</span><span class="p">,</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"onnx_quantization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OnnxQuantization"</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// set per_channel to True.</span>
-<span class="w">    </span><span class="nt">&quot;per_channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calib_data_config&quot;</span>
+<span class="w">    </span><span class="nt">"per_channel"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calib_data_config"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -745,17 +944,17 @@ If the user desires to only tune either of dynamic or static quantization, Olive
 <code class="docutils literal notranslate"><span class="pre">IncStaticQuantization</span></code> respectively.</p>
 <section id="id9">
 <h3>Example Configuration<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;inc_quantization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IncStaticQuantization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;approach&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weight_only&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;weight_only_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;bits&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;algorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gptq&quot;</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"inc_quantization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IncStaticQuantization"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"approach"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weight_only"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"weight_only_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"bits"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"algorithm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gptq"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;data_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calib_data_config&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;calibration_sampling_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">8</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;save_as_external_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;all_tensors_to_one_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="nt">"data_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calib_data_config"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"calibration_sampling_size"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">8</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"save_as_external_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"all_tensors_to_one_file"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -773,11 +972,11 @@ If the user desires to only tune either of dynamic or static quantization, Olive
 <h3>Example Configuration<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <section id="a-pure-4-bit-quantization">
 <h4>a. Pure 4 bit Quantization<a class="headerlink" href="#a-pure-4-bit-quantization" title="Link to this heading">#</a></h4>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;quantization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NVModelOptQuantization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;algorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;awq&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;tokenizer_dir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;microsoft/Phi-3-mini-4k-instruct&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;calibration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;awq_lite&quot;</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"quantization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NVModelOptQuantization"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"algorithm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awq"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"tokenizer_dir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"microsoft/Phi-3-mini-4k-instruct"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"calibration_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awq_lite"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -786,12 +985,12 @@ If the user desires to only tune either of dynamic or static quantization, Olive
 <h4>b. Mixed Precision Quantization<a class="headerlink" href="#b-mixed-precision-quantization" title="Link to this heading">#</a></h4>
 <p>For better accuracy while maintaining model compression, you can enable mixed precision quantization using the <code class="docutils literal notranslate"><span class="pre">enable_mixed_quant</span></code> parameter. This allows higher precision levels (8 bit) for important layers of the model while using 4 bits for others:</p>
 <p><strong>1. Default Mixed Precision Strategy</strong></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;quantization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NVModelOptQuantization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;algorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;awq&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;tokenizer_dir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;meta-llama/Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;calibration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;awq_lite&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;enable_mixed_quant&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"quantization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NVModelOptQuantization"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"algorithm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awq"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"tokenizer_dir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"meta-llama/Llama-3.1-8B-Instruct"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"calibration_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awq_lite"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"enable_mixed_quant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -803,12 +1002,12 @@ If the user desires to only tune either of dynamic or static quantization, Olive
 </ul>
 <p><strong>2. Custom Layer Selection with layers_8bit</strong></p>
 <p>For fine-grained control over which specific layers should use INT8 quantization, use the <code class="docutils literal notranslate"><span class="pre">layers_8bit</span></code> parameter with a comma-separated list of layer name patterns:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;quantization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NVModelOptQuantization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;algorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;awq&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;tokenizer_dir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;meta-llama/Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;calibration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;awq_lite&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;layers_8bit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;model.layers.0,model.layers.1,lm_head&quot;</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"quantization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NVModelOptQuantization"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"algorithm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awq"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"tokenizer_dir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"meta-llama/Llama-3.1-8B-Instruct"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"calibration_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awq_lite"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"layers_8bit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"model.layers.0,model.layers.1,lm_head"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -851,8 +1050,8 @@ If the user desires to only tune either of dynamic or static quantization, Olive
 <section id="id11">
 <h3>Example Configuration<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AimetQuantization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calib_data_config&quot;</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AimetQuantization"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calib_data_config"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -865,10 +1064,10 @@ If the user desires to only tune either of dynamic or static quantization, Olive
 <li><p><code class="docutils literal notranslate"><span class="pre">nodes_to_exclude</span></code>: List of node names to exclude from LPBQ weight quantization (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AimetQuantization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calib_data_config&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;techniques&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lpbq&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;block_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">}</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AimetQuantization"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calib_data_config"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"techniques"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lpbq"</span><span class="p">,</span><span class="w"> </span><span class="nt">"block_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
@@ -882,11 +1081,11 @@ If the user desires to only tune either of dynamic or static quantization, Olive
 <li><p><code class="docutils literal notranslate"><span class="pre">num_candidates</span></code>: Number of encoding candidates to sweep for each weight (default: <code class="docutils literal notranslate"><span class="pre">20</span></code>).</p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AimetQuantization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calib_data_config&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;precision&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;int4&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;techniques&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;seqmse&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;num_candidates&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">}</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AimetQuantization"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calib_data_config"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"precision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int4"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"techniques"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"seqmse"</span><span class="p">,</span><span class="w"> </span><span class="nt">"num_candidates"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
@@ -901,10 +1100,10 @@ If the user desires to only tune either of dynamic or static quantization, Olive
 <li><p><code class="docutils literal notranslate"><span class="pre">nodes_to_exclude</span></code>: List of node names to exclude from AdaRound optimization (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AimetQuantization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calib_data_config&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;techniques&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;adaround&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;num_iterations&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nodes_to_exclude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/lm_head/MatMul&quot;</span><span class="p">]}</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AimetQuantization"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calib_data_config"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"techniques"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adaround"</span><span class="p">,</span><span class="w"> </span><span class="nt">"num_iterations"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="nt">"nodes_to_exclude"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/lm_head/MatMul"</span><span class="p">]}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
@@ -984,14 +1183,20 @@ If the user desires to only tune either of dynamic or static quantization, Olive
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-native-rtn">PyTorch Native RTN</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moe-and-onnx-export"><code class="docutils literal notranslate"><span class="pre">moe</span></code> and ONNX export</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moe-and-native-pytorch-inference-force-the-eager-experts-implementation"><code class="docutils literal notranslate"><span class="pre">moe</span></code> and native PyTorch inference: force the <code class="docutils literal notranslate"><span class="pre">"eager"</span></code> experts implementation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-to-not-convert-and-overrides"><code class="docutils literal notranslate"><span class="pre">modules_to_not_convert</span></code> and <code class="docutils literal notranslate"><span class="pre">overrides</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution-order-and-override-precedence">Resolution order and override precedence</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Example Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-width-fused-moe-checkpoint-recipe">Mixed-width fused MoE checkpoint recipe</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composing-with-gptq">Composing with <code class="docutils literal notranslate"><span class="pre">Gptq</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-note-removal-of-quantlinear-quantembedding">Migration note: removal of <code class="docutils literal notranslate"><span class="pre">QuantLinear</span></code> / <code class="docutils literal notranslate"><span class="pre">QuantEmbedding</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bit-quantization-is-not-exportable-to-onnx">2-bit quantization is not exportable to ONNX</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#native-int3-checkpoints">Native INT3 checkpoints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bit-linear-quantization-is-not-exportable-through-onnx-conversion">2-bit linear quantization is not exportable through ONNX conversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-q-k-v-settings">Independent Q/K/V settings</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-native-kquant">PyTorch Native KQuant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selective-mixed-precision-for-moe">Selective mixed precision for MoE</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hqq">HQQ</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Example Configuration</a></li>
 </ul>
@@ -1041,8 +1246,8 @@ If the user desires to only tune either of dynamic or static quantization, Olive
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1068,7 +1273,7 @@ If the user desires to only tune either of dynamic or static quantization, Olive
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
 </p></div>
       
     </div>

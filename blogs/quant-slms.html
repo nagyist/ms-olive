@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -27,8 +26,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -37,10 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/header.css?v=5dcc4e7b" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -52,7 +51,7 @@
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'blogs/quant-slms';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = './_static/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'main';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -64,6 +63,7 @@
     <link rel="next" title="Fine-Tuning Diffusion Models with Olive" href="sd-lora.html" />
     <link rel="prev" title="Introducing olive init: An Interactive Wizard for Model Optimization" href="olive-init-cli.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="main" />
   
@@ -113,7 +113,7 @@
   
     <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
   </button>
   
@@ -216,7 +216,7 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
  <i class="fa-solid fa-magnifying-glass"></i>
  <span class="search-button__default-text">Search</span>
  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -251,7 +251,7 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
  <i class="fa-solid fa-magnifying-glass"></i>
  <span class="search-button__default-text">Search</span>
  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -260,7 +260,7 @@
   
 
   
-    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
     </button>
   
@@ -450,9 +450,9 @@
 <p>Olive provides simple configuration options for these strategies:</p>
 <ul class="simple">
 <li><p><strong>No mixed precision:</strong> all layers in INT4</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">k_quant_down</span></code>:</strong> LM head in INT8</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">k_quant_down</span></code> (extended):</strong> LM head + MLP down-projection for first 1/8, last 1/8, and every third middle layer in INT8</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">k_quant_mixed</span></code>:</strong> LM head + MLP down and attention QKV projections for first 1/8, last 1/8, and every third middle layer in INT8</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">high_precision_lm_head</span></code>:</strong> LM head in INT8</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">high_precision_mlp_down</span></code>:</strong> LM head + MLP down-projection for first 1/8, last 1/8, and every third middle layer in INT8</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">high_precision_mlp_down_qkv</span></code>:</strong> LM head + MLP down and attention QKV projections for first 1/8, last 1/8, and every third middle layer in INT8</p></li>
 </ul>
 </section>
 <hr class="docutils" />
@@ -500,7 +500,7 @@ Results were compared against:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B</p></td>
-<td><p>block=128, symmetric=False, smp=k_quant_mixed, quarot=False</p></td>
+<td><p>block=128, symmetric=False, smp=high_precision_mlp_down_qkv, quarot=False</p></td>
 <td class="text-right"><p>+2.724</p></td>
 <td class="text-right"><p>+7.624</p></td>
 <td class="text-right"><p>1.434</p></td>
@@ -508,7 +508,7 @@ Results were compared against:</p>
 <td class="text-right"><p>+0.005</p></td>
 </tr>
 <tr class="row-odd"><td><p>meta-llama/Llama-3.2-1B-Instruct</p></td>
-<td><p>block=32, symmetric=False, smp=k_quant_down, quarot=True</p></td>
+<td><p>block=32, symmetric=False, smp=high_precision_mlp_down, quarot=True</p></td>
 <td class="text-right"><p>−0.096</p></td>
 <td class="text-right"><p>+7.342</p></td>
 <td class="text-right"><p>1.361</p></td>
@@ -516,7 +516,7 @@ Results were compared against:</p>
 <td class="text-right"><p>+18.112</p></td>
 </tr>
 <tr class="row-even"><td><p>microsoft/Phi-3.5-mini-instruct</p></td>
-<td><p>block=32, symmetric=False, smp=k_quant_down, quarot=False</p></td>
+<td><p>block=32, symmetric=False, smp=high_precision_mlp_down, quarot=False</p></td>
 <td class="text-right"><p>+0.924</p></td>
 <td class="text-right"><p>+1.042</p></td>
 <td class="text-right"><p>2.453</p></td>
@@ -524,7 +524,7 @@ Results were compared against:</p>
 <td class="text-right"><p>+13.666</p></td>
 </tr>
 <tr class="row-odd"><td><p>microsoft/Phi-4-mini-instruct</p></td>
-<td><p>block=32, symmetric=False, smp=k_quant_mixed, quarot=True</p></td>
+<td><p>block=32, symmetric=False, smp=high_precision_mlp_down_qkv, quarot=True</p></td>
 <td class="text-right"><p>−0.348</p></td>
 <td class="text-right"><p>+0.929</p></td>
 <td class="text-right"><p>3.884</p></td>
@@ -532,7 +532,7 @@ Results were compared against:</p>
 <td class="text-right"><p>+6.169</p></td>
 </tr>
 <tr class="row-even"><td><p>Qwen/Qwen2.5-1.5B-Instruct</p></td>
-<td><p>block=32, symmetric=True, smp=k_quant_down, quarot=False</p></td>
+<td><p>block=32, symmetric=True, smp=high_precision_mlp_down, quarot=False</p></td>
 <td class="text-right"><p>+0.547</p></td>
 <td class="text-right"><p>+1.636</p></td>
 <td class="text-right"><p>1.479</p></td>
@@ -547,7 +547,7 @@ Results were compared against:</p>
 <h3>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Block size:</strong> Smaller block sizes (32) consistently yielded better results than larger ones (128), likely due to finer granularity during quantization.</p></li>
-<li><p><strong>Mixed precision:</strong> The <code class="docutils literal notranslate"><span class="pre">k_quant_down</span></code> configuration provided the best trade-off between quality and model size, performing strongly across most models.</p></li>
+<li><p><strong>Mixed precision:</strong> The <code class="docutils literal notranslate"><span class="pre">high_precision_mlp_down</span></code> configuration provided the best trade-off between quality and model size, performing strongly across most models.</p></li>
 <li><p><strong>Symmetric vs asymmetric:</strong> Asymmetric quantization (<code class="docutils literal notranslate"><span class="pre">symmetric=False</span></code>) performed better for most models, as it captures asymmetric weight distributions more effectively.</p></li>
 <li><p><strong>QuaRot:</strong> The QuaRot pass benefited certain models (e.g., Llama-1B, Phi-4-mini) but not others, indicating model-specific sensitivity.</p></li>
 </ul>
@@ -641,8 +641,8 @@ Its modular pipeline design and integration with ONNX Runtime allow users to eff
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -668,7 +668,7 @@ Its modular pipeline design and integration with ONNX Runtime allow users to eff
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
 </p></div>
       
     </div>
